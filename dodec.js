@@ -1,7 +1,3 @@
-var farX = 700;
-var lowY = 700;
-
-
 $(document).ready(function(){
 background();
 hill();
