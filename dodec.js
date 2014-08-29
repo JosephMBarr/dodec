@@ -5,7 +5,7 @@ $(document).ready(function(){
 background();
 hill();
 
-
+//draw hill down which boulder will roll
 function hill(){
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
@@ -20,7 +20,7 @@ function background(){
 	var c=document.getElementById("can1");
 	var ctx=c.getContext("2d");
 	ctx.fillStyle="#151B54";
-	ctx.fillRect(0,0,700,700);
+	ctx.fillRect(0,0,farX,lowY);
 
 }
 
