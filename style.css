@@ -1,3 +1,18 @@
-#canvas{
-  border:1px solid #d3d3d3;
+#can1{
+  border:1px solid #FF0000;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
+}
+#can2{
+  border:1px solid #E5E4E2;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin:auto;
 }
