@@ -4,14 +4,14 @@ var farX = width;
 var lowY = height;
 var scale = 25;
 var time = 0
-setInterval(function () {time+=1}, 1000);
 var timeout = 0
+setInterval(function () {time+=1}, 1000); //this sets a timer that counts off seconds
 $(document).ready(function(){
 background();
 hill();
 dodec();
 document.addEventListener('keydown',function(event){
-	if(event.keyCode == 38 && timeout<(time-0.5)){
+	if(event.keyCode == 38 && timeout<(time-0.5)){ //if less than 0.5 seconds have passed, don't jump
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
 		timeout = time
 	}
