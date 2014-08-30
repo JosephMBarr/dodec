@@ -1,4 +1,5 @@
 var height = $(window).height();
+//I can't yet figure out how to get the starting position to be on top of the hill (help?)
 var width = $(window).width();
 var farX = width;
 var lowY = height;
@@ -12,7 +13,7 @@ hill();
 dodec();
 document.addEventListener('keydown',function(event){
 	if(event.keyCode == 38 && timeout<(time-0.5)){ //if less than 0.5 seconds have passed, don't jump
-		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
+		$("#can3").animate({top:"-60px"}).animate({top:"92px"}); //changed this so it lands on top of the hill
 		timeout = time
 	}
 });
@@ -39,7 +40,7 @@ function background(){
 	var ctx=c.getContext("2d");
 	c.setAttribute("height",height);
 	c.setAttribute("width",width);
-	ctx.fillStyle="#151B54";
+	ctx.fillStyle="#00CCFF";
 	ctx.fillRect(0,0,farX,lowY);
 
 }
