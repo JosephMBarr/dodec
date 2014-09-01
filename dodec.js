@@ -72,7 +72,7 @@ function obstacle(){
 	var c = document.getElementById("obs");
 	c.setAttribute("height",40);
 	c.setAttribute("width",40);
-        c.style.left(obsMove);
+        c.style.left=obsMove;
 	var cc = c.getContext('2d');
 	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
