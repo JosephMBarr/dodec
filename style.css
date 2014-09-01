@@ -21,6 +21,9 @@
 	right:0px;
 	top:127px;
 }
+#obs{
+	position:absolute;
+}
 @-webkit-keyframes spin{
 	0%{
 		-webkit-transform:rotate(0deg);	
