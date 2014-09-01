@@ -3,7 +3,7 @@ var width = $(window).width();
 var farX = width;
 var lowY = height;
 var scale = 25;
-
+var obsMove = 0;
 
 $(document).ready(function(){
 background();
@@ -14,6 +14,7 @@ document.addEventListener('keydown',function(event){
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
 	}
 });
+obstacle();
 
 
 
@@ -43,30 +44,47 @@ function background(){
 }
 //draw a dodecagon
 function dodec(){
-	var move=0;
+
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",12*scale);
 	c3.setAttribute("width",12*scale);
 	var ct=c3.getContext("2d");
 	ct.strokeStyle="#E5E4E2";
 	ct.beginPath();
-	ct.moveTo(12*scale,6*scale+move);
-	ct.lineTo(11*scale,9*scale+move);
-	ct.lineTo(9*scale,11*scale+move);
-	ct.lineTo(6*scale,12*scale+move);
-	ct.lineTo(3*scale,11*scale+move);
-	ct.lineTo(1*scale,9*scale+move);
-	ct.lineTo(0*scale,6*scale+move);
-	ct.lineTo(1*scale,3*scale+move);
-	ct.lineTo(3*scale,1*scale+move);
-	ct.lineTo(6*scale,0*scale+move);
-	ct.lineTo(9*scale,1*scale+move);
-	ct.lineTo(11*scale,3*scale+move);
+	ct.moveTo(12*scale,6*scale);
+	ct.lineTo(11*scale,9*scale);
+	ct.lineTo(9*scale,11*scale);
+	ct.lineTo(6*scale,12*scale);
+	ct.lineTo(3*scale,11*scale);
+	ct.lineTo(1*scale,9*scale);
+	ct.lineTo(0*scale,6*scale);
+	ct.lineTo(1*scale,3*scale);
+	ct.lineTo(3*scale,1*scale);
+	ct.lineTo(6*scale,0*scale);
+	ct.lineTo(9*scale,1*scale);
+	ct.lineTo(11*scale,3*scale);
 	ct.closePath();
 	ct.stroke();
-	move+=1;
 
 }
+//obstacle test
+function obstacle(){
+	var c = document.getElementById("obs");
+	c.setAttribute("height",lowY);
+	c.setAttribute("width",farX);
+	var cc = c.getContext('2d');
+	cc.rotate(-.25);
+	cc.strokeStyle="#E5E4E2";
+	cc.strokeRect(obsMove,715,scale,scale);
+	obsMove +=3;
+	if(obsMove>1500){
+		clearInterval(obs);
+	}
+}
+var obs = setInterval(function(){obstacle()},16);
+
+var spin = setInterval(spin,100);
+
 
 });
 
