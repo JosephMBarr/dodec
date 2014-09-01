@@ -72,10 +72,11 @@ function obstacle(){
 	var c = document.getElementById("obs");
 	c.setAttribute("height",40);
 	c.setAttribute("width",40);
+        c.style.left(obsMove);
 	var cc = c.getContext('2d');
 	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
-	cc.strokeRect(obsMove,715,scale,scale);
+	cc.strokeRect(0,0,scale,scale);
 	obsMove +=3;
 	if(obsMove>1500){
 		clearInterval(obs);
