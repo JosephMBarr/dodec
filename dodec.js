@@ -73,7 +73,7 @@ function obstacle(){
 	c.setAttribute("height",lowY);
 	c.setAttribute("width",farX);
 	var cc = c.getContext('2d');
-	cc.rotate(-.27);
+	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
 	cc.strokeRect(obsMove,715,scale,scale);
 	obsMove +=3;
