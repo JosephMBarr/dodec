@@ -75,7 +75,7 @@ function obstacle(){
 	var cc = c.getContext('2d');
 	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
-	cc.strokeRect(obsMove,715,scale,scale);
+	cc.strokeRect(obsMove,715,40,40);
 	obsMove +=3;
 	if(obsMove>1500){
 		clearInterval(obs);
