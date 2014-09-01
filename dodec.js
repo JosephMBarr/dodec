@@ -70,12 +70,12 @@ function dodec(){
 //obstacle test
 function obstacle(){
 	var c = document.getElementById("obs");
-	c.setAttribute("height",lowY);
-	c.setAttribute("width",farX);
+	c.setAttribute("height",40);
+	c.setAttribute("width",40);
 	var cc = c.getContext('2d');
 	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
-	cc.strokeRect(obsMove,715,40,40);
+	cc.strokeRect(obsMove,715,scale,scale);
 	obsMove +=3;
 	if(obsMove>1500){
 		clearInterval(obs);
