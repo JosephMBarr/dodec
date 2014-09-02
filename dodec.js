@@ -10,11 +10,11 @@ $(document).ready(function(){
 background();
 hill();
 dodec();
-document.addEventListener('keydown',function(event){
+/*document.addEventListener('keydown',function(event){
 	if(event.keyCode == 38){
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
 	}
-});
+});*/
 obstacle();
 
 
@@ -27,6 +27,8 @@ function hill(){
 	var ctx2=c2.getContext("2d");
 	c2.setAttribute("height",height);
 	c2.setAttribute("width",width);
+	ctx2.fillStyle="#151B54";
+	ctx2.fillRect(0,0,farX,lowY);
 	ctx2.strokeStyle="#E5E4E2";
 	ctx2.beginPath();
 	ctx2.moveTo(farX, lowY/2)
@@ -34,15 +36,14 @@ function hill(){
 	ctx2.stroke();
 }
 //draw background
-function background(){
+/*function background(){
 	var c=document.getElementById("can1");
 	var ctx=c.getContext("2d");
 	c.setAttribute("height",height);
 	c.setAttribute("width",width);
-	ctx.fillStyle="#151B54";
-	ctx.fillRect(0,0,farX,lowY);
 
-}
+
+}*/
 //draw a dodecagon
 function dodec(){
 
