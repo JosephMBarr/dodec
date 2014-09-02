@@ -1,4 +1,4 @@
-zvar height = $(window).height();
+var height = $(window).height();
 var width = $(window).width();
 var farX = width;
 var lowY = height;
