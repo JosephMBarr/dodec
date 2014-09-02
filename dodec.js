@@ -5,22 +5,28 @@ var lowY = height;
 var scale = 25;
 var obsX = 5;
 var obsY = 5;
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
 hill();
-dodec();
+requestAnimationFrame(dodec);
 /*document.addEventListener('keydown',function(event){
 	if(event.keyCode == 38){
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
 	}
 });*/
 obstacle();
+var c3=document.getElementById("can3");
+c3.setAttribute("height",height);
+c3.setAttribute("width",width);
+var ct=c3.getContext("2d");
 
 
 
 
 
-//draw hill down which boulder will roll
+//draw hill down which boulder will roll as well as background
 function hill(){
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
@@ -34,41 +40,39 @@ function hill(){
 	ctx2.lineTo(0,lowY);
 	ctx2.stroke();
 }
-//draw background
-/*function background(){
-	var c=document.getElementById("can1");
-	var ctx=c.getContext("2d");
-	c.setAttribute("height",height);
-	c.setAttribute("width",width);
-
-
-}*/
 //draw a dodecagon
 function dodec(){
-
-	var c3=document.getElementById("can3");
-	c3.setAttribute("height",12*scale);
-	c3.setAttribute("width",12*scale);
-	var ct=c3.getContext("2d");
+	var decSquare = 12*scale;
+	var degrees = 2;
+	var horizMargin = width-12*scale-5; 
+	var vertMargin = height/2-12*scale+25;
+	ct.clearRect(0,0,width,height);
+	ct.translate(decSquare/2+horizMargin,decSquare/2+vertMargin);
+	ct.rotate(-degrees*Math.PI/180);
+	ct.translate(-decSquare/2-horizMargin,-decSquare/2-vertMargin);
+	ct.save();
 	ct.strokeStyle="#E5E4E2";
 	ct.beginPath();
-	ct.moveTo(12*scale,6*scale);
-	ct.lineTo(11*scale,9*scale);
-	ct.lineTo(9*scale,11*scale);
-	ct.lineTo(6*scale,12*scale);
-	ct.lineTo(3*scale,11*scale);
-	ct.lineTo(1*scale,9*scale);
-	ct.lineTo(0*scale,6*scale);
-	ct.lineTo(1*scale,3*scale);
-	ct.lineTo(3*scale,1*scale);
-	ct.lineTo(6*scale,0*scale);
-	ct.lineTo(9*scale,1*scale);
-	ct.lineTo(11*scale,3*scale);
+	ct.moveTo(12*scale+horizMargin,6*scale+vertMargin);
+	ct.lineTo(11*scale+horizMargin,9*scale+vertMargin);
+	ct.lineTo(9*scale+horizMargin,11*scale+vertMargin);
+	ct.lineTo(6*scale+horizMargin,12*scale+vertMargin);
+	ct.lineTo(3*scale+horizMargin,11*scale+vertMargin);
+	ct.lineTo(1*scale+horizMargin,9*scale+vertMargin);
+	ct.lineTo(0*scale+horizMargin,6*scale+vertMargin);
+	ct.lineTo(1*scale+horizMargin,3*scale+vertMargin);
+	ct.lineTo(3*scale+horizMargin,1*scale+vertMargin);
+	ct.lineTo(6*scale+horizMargin,0*scale+vertMargin);
+	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin);
+	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin);
 	ct.closePath();
+	requestAnimationFrame(dodec);
 	ct.stroke();
+	ct.restore();
+	
 
-}
-//obstacle test
+
+}//obstacle test
 function obstacle(){
 	var c = document.getElementById("obs");
 	c.setAttribute("height",scale);
@@ -84,8 +88,6 @@ function obstacle(){
 		clearInterval(obs);
 	}
 }
-var obs = setInterval(obstacle,16);
-var dis = setInterval(colDec,50);
 function colDec(){
 	var d = document.getElementById("can3"),
 	style = window.getComputedStyle(d),
