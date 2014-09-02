@@ -3,7 +3,8 @@ var width = $(window).width();
 var farX = width;
 var lowY = height;
 var scale = 25;
-var obsMove = 0;
+var obsX = 5;
+var obsY = 5;
 
 $(document).ready(function(){
 background();
@@ -70,22 +71,30 @@ function dodec(){
 //obstacle test
 function obstacle(){
 	var c = document.getElementById("obs");
-	c.setAttribute("height",40);
-	c.setAttribute("width",40);
-        c.style.left=obsMove;
+	c.setAttribute("height",scale);
+	c.setAttribute("width",scale);
+    c.style.left=obsX+'px';
+    c.style.bottom=obsY+'px';
 	var cc = c.getContext('2d');
-	cc.rotate(-.267);
 	cc.strokeStyle="#E5E4E2";
 	cc.strokeRect(0,0,scale,scale);
-	obsMove +=3;
-	if(obsMove>1500){
+	obsX +=3;
+	obsY +=.82;
+	if(obsX>1500){
 		clearInterval(obs);
 	}
 }
-var obs = setInterval(function(){obstacle()},16);
-
-var spin = setInterval(spin,100);
-
+var obs = setInterval(obstacle,16);
+var dis = setInterval(colDec,50);
+function colDec(){
+	var d = document.getElementById("can3"),
+	style = window.getComputedStyle(d),
+	dodecHitbox = style.getPropertyValue('top');
+	
+	var o = document.getElementById("obs"),
+	style = window.getComputedStyle(o),
+	obsHitbox = style.getPropertyValue(
+}
 
 });
 
