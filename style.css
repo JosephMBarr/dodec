@@ -24,7 +24,7 @@
 #obs{
 	position:absolute;
 }
-@-webkit-keyframes spin{
+/*@-webkit-keyframes spin{
 	0%{
 		-webkit-transform:rotate(0deg);	
 }
@@ -43,4 +43,4 @@
 #can3{
 	-webkit-animation: spin 2s linear 0s infinite reverse none running;
 	-moz-animation: spin 2s linear 0s infinite normal none running;
-}
+}*/
