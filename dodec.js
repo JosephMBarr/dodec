@@ -1,4 +1,4 @@
-var height = $(window).height();
+zvar height = $(window).height();
 var width = $(window).width();
 var farX = width;
 var lowY = height;
@@ -90,10 +90,6 @@ function colDec(){
 	var d = document.getElementById("can3"),
 	style = window.getComputedStyle(d),
 	dodecHitbox = style.getPropertyValue('top');
-	
-	var o = document.getElementById("obs"),
-	style = window.getComputedStyle(o),
-	obsHitbox = style.getPropertyValue(
 }
 
 });
