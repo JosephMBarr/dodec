@@ -7,7 +7,6 @@ var obsX = 5;
 var obsY = 5;
 
 $(document).ready(function(){
-background();
 hill();
 dodec();
 /*document.addEventListener('keydown',function(event){
