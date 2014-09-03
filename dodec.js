@@ -75,6 +75,7 @@ function obs(){
         ct.strokeStyle="#E5E4E2";
 	ct.strokeRect(0,0,scale,scale);	
 	requestAnimationFrame(obs);
+	console.log("2");
 }
 
 });
