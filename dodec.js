@@ -16,7 +16,7 @@ requestAnimationFrame(dodec);
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
 	}
 });*/
-obstacle();
+//obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
@@ -69,29 +69,11 @@ function dodec(){
 	requestAnimationFrame(dodec);
 	ct.stroke();
 	ct.restore();
+        ct.strokeStyle="#E5E4E2";
+	ct.strokeRect(0,0,scale,scale);
 	
 
 
-}//obstacle test
-function obstacle(){
-	var c = document.getElementById("obs");
-	c.setAttribute("height",scale);
-	c.setAttribute("width",scale);
-    c.style.left=obsX+'px';
-    c.style.bottom=obsY+'px';
-	var cc = c.getContext('2d');
-	cc.strokeStyle="#E5E4E2";
-	cc.strokeRect(0,0,scale,scale);
-	obsX +=3;
-	obsY +=.82;
-	if(obsX>1500){
-		clearInterval(obs);
-	}
-}
-function colDec(){
-	var d = document.getElementById("can3"),
-	style = window.getComputedStyle(d),
-	dodecHitbox = style.getPropertyValue('top');
 }
 
 });
