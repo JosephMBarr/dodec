@@ -11,6 +11,7 @@ window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 $(document).ready(function(){
 hill();
 requestAnimationFrame(dodec);
+requestAnimationFrame(obs);
 /*document.addEventListener('keydown',function(event){
 	if(event.keyCode == 38){
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
@@ -69,11 +70,11 @@ function dodec(){
 	requestAnimationFrame(dodec);
 	ct.stroke();
 	ct.restore();
+}
+function obs(){
         ct.strokeStyle="#E5E4E2";
-	ct.strokeRect(0,0,scale,scale);
-	
-
-
+	ct.strokeRect(0,0,scale,scale);	
+	requestAnimationFrame(obs);
 }
 
 });
