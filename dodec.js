@@ -10,8 +10,8 @@ window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
 hill();
-requestAnimationFrame(dodec);
 requestAnimationFrame(obs);
+requestAnimationFrame(dodec);
 /*document.addEventListener('keydown',function(event){
 	if(event.keyCode == 38){
 		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
