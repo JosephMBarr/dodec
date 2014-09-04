@@ -72,9 +72,9 @@ function dodec(){
 	ct.restore();
 }
 function obs(){
-	var cta = c3.getContext('2d');
-        cta.strokeStyle="#E5E4E2";
-	cta.strokeRect(0,0,scale,scale);	
+	ct.clearRect(0,0,width,height);
+        ct.strokeStyle="#E5E4E2";
+	ct.strokeRect(0,0,scale,scale);	
 	requestAnimationFrame(obs);
 	console.log("2");
 }
