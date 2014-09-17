@@ -4,25 +4,26 @@ var farX = width;
 var lowY = height;
 var scale = 25;
 var obsX = 5;
-var obsY = 5;
+var obsY = height-scale*2;
+var horizMargin = width-12*scale-5; 
+var vertMargin = height/2-12*scale+25;
+var move = 0;
+var change = 0;
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
 hill();
-requestAnimationFrame(obs);
-requestAnimationFrame(dodec);
-/*document.addEventListener('keydown',function(event){
-	if(event.keyCode == 38){
-		$("#can3").animate({top:"-60px"}).animate({top:"127px"});
-	}
-});*/
+requestAnimationFrame(animate);
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
-
+function animate(){
+	dodec();
+	requestAnimationFrame(animate);
+}
 
 
 
@@ -41,42 +42,57 @@ function hill(){
 	ctx2.lineTo(0,lowY);
 	ctx2.stroke();
 }
-//draw a dodecagon
+function drawDodec(){
+	ct.strokeStyle="#E5E4E2";
+	ct.beginPath();
+	ct.moveTo(12*scale+horizMargin+move,6*scale+vertMargin+move);
+	ct.lineTo(11*scale+horizMargin+move,9*scale+vertMargin+move);
+	ct.lineTo(9*scale+horizMargin+move,11*scale+vertMargin+move);
+	ct.lineTo(6*scale+horizMargin+move,12*scale+vertMargin+move);
+	ct.lineTo(3*scale+horizMargin+move,11*scale+vertMargin+move);
+	ct.lineTo(1*scale+horizMargin+move,9*scale+vertMargin+move);
+	ct.lineTo(0*scale+horizMargin+move,6*scale+vertMargin+move);
+	ct.lineTo(1*scale+horizMargin+move,3*scale+vertMargin+move);
+	ct.lineTo(3*scale+horizMargin+move,1*scale+vertMargin+move);
+	ct.lineTo(6*scale+horizMargin+move,0*scale+vertMargin+move);
+	ct.lineTo(9*scale+horizMargin+move,1*scale+vertMargin+move);
+	ct.lineTo(11*scale+horizMargin+move,3*scale+vertMargin+move);
+	ct.lineTo(12*scale+horizMargin+move,6*scale+vertMargin+move);
+	if(ct.isPointInPath(obsX,obsY)){
+		alert('boop');
+	}
+	ct.stroke();
+	move += change;
+	if(move<-70){
+		change = 4;
+	}
+	if(move == 0){
+		change = 0;
+	}
+}
 function dodec(){
 	var decSquare = 12*scale;
 	var degrees = 2;
-	var horizMargin = width-12*scale-5; 
-	var vertMargin = height/2-12*scale+25;
-	ct.clearRect(0,0,width,height);
+	ct.clearRect(-width,-height,width*2,height*2);
+	obs();
+	ct.save();
+	drawDodec();
 	ct.translate(decSquare/2+horizMargin,decSquare/2+vertMargin);
 	ct.rotate(-degrees*Math.PI/180);
 	ct.translate(-decSquare/2-horizMargin,-decSquare/2-vertMargin);
-	ct.save();
-	ct.strokeStyle="#E5E4E2";
-	ct.beginPath();
-	ct.moveTo(12*scale+horizMargin,6*scale+vertMargin);
-	ct.lineTo(11*scale+horizMargin,9*scale+vertMargin);
-	ct.lineTo(9*scale+horizMargin,11*scale+vertMargin);
-	ct.lineTo(6*scale+horizMargin,12*scale+vertMargin);
-	ct.lineTo(3*scale+horizMargin,11*scale+vertMargin);
-	ct.lineTo(1*scale+horizMargin,9*scale+vertMargin);
-	ct.lineTo(0*scale+horizMargin,6*scale+vertMargin);
-	ct.lineTo(1*scale+horizMargin,3*scale+vertMargin);
-	ct.lineTo(3*scale+horizMargin,1*scale+vertMargin);
-	ct.lineTo(6*scale+horizMargin,0*scale+vertMargin);
-	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin);
-	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin);
-	ct.closePath();
-	requestAnimationFrame(dodec);
-	ct.stroke();
 	ct.restore();
+	document.addEventListener('keydown',function(event){
+		var thekey=event.keyCode;
+		if(thekey == 38 && change == 0){
+			change = -4;
+		}
+	});
 }
 function obs(){
-	ct.clearRect(0,0,width,height);
-        ct.strokeStyle="#E5E4E2";
-	ct.strokeRect(0,0,scale,scale);	
-	requestAnimationFrame(obs);
-	console.log("2");
+    ct.strokeStyle="#E5E4E2";
+	ct.strokeRect(obsX,obsY,scale,scale);
+	obsX += 3;
+	obsY -= .8;
 }
 
 });
