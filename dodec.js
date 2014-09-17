@@ -65,8 +65,8 @@ function drawDodec(){
 	}
 	ct.stroke();
 	move += change;
-	if(move<-70){
-		change = 4;
+	if(move<-100){
+		change = 6;
 	}
 	if(move == 0){
 		change = 0;
@@ -86,7 +86,7 @@ function dodec(){
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
 		if(thekey == 38 && change == 0){
-			change = -4;
+			change = -6;
 		}
 	});
 }
