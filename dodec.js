@@ -10,6 +10,10 @@ var vertMargin = height/2-12*scale+25;
 var move = 0;
 var change = 0;
 var boopmeter=0;
+var score = 0;
+var lives = 3;
+var obsChange = 1;
+
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
@@ -21,11 +25,14 @@ var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
+ct.font="40px Lucida Console";
+ct.fillStyle='#E5E4E2';
 function animate(){
 	dodec();
+	ct.fillText(score+" pts",100,100);
+	ct.fillText(lives+" lives",300,100);
 	requestAnimationFrame(animate);
 }
-
 
 
 
@@ -61,6 +68,7 @@ function drawDodec(){
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	if(ct.isPointInPath(obsX,obsY) && boopmeter == 0){
  		alert('boop');
+ 		lives -= 1;
 		boopmeter=1;
 	}
 	ct.stroke();
@@ -93,9 +101,13 @@ function dodec(){
 function obs(){
     ct.strokeStyle="#E5E4E2";
 	ct.strokeRect(obsX,obsY,scale,scale);
-	obsX += 3;
-	obsY -= .8;
+	obsX += 3*obsChange;
+	obsY -= .8*obsChange;
 	if (obsX>farX){
+		if(boopmeter == 0){
+			score += 1;
+			obsChange +=.5;
+		}
 		obsX = 5;
 		obsY = height-scale*2;
 		boopmeter=0
