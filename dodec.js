@@ -98,6 +98,7 @@ function obs(){
 	if (obsX>farX){
 		obsX = 5;
 		obsY = height-scale*2;
+		boopmeter=0
 	}
 	
 }
