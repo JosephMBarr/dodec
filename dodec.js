@@ -95,11 +95,7 @@ function obs(){
 	ct.strokeRect(obsX,obsY,scale,scale);
 	obsX += 3;
 	obsY -= .8;
-	if (obsX>farX){
-		 obsX = 5;
-		 obsY = height-scale*2;
-	}
-	
+
 }
 
 });
