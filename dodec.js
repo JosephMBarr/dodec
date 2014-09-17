@@ -46,21 +46,23 @@ function hill(){
 function drawDodec(){
 	ct.strokeStyle="#E5E4E2";
 	ct.beginPath();
-	ct.moveTo(12*scale+horizMargin,6*scale+vertMargin+move);
-	ct.lineTo(11*scale+horizMargin,9*scale+vertMargin+move);
-	ct.lineTo(9*scale+horizMargin,11*scale+vertMargin+move);
-	ct.lineTo(6*scale+horizMargin,12*scale+vertMargin+move);
-	ct.lineTo(3*scale+horizMargin,11*scale+vertMargin+move);
-	ct.lineTo(1*scale+horizMargin,9*scale+vertMargin+move);
-	ct.lineTo(0*scale+horizMargin,6*scale+vertMargin+move);
-	ct.lineTo(1*scale+horizMargin,3*scale+vertMargin+move);
-	ct.lineTo(3*scale+horizMargin,1*scale+vertMargin+move);
-	ct.lineTo(6*scale+horizMargin,0*scale+vertMargin+move);
-	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin+move);
-	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
-	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
-	if(ct.isPointInPath(obsX,obsY)){
-
+	ct.moveTo(12*scale+horizMargin+move,6*scale+vertMargin+move);
+	ct.lineTo(11*scale+horizMargin+move,9*scale+vertMargin+move);
+	ct.lineTo(9*scale+horizMargin+move,11*scale+vertMargin+move);
+	ct.lineTo(6*scale+horizMargin+move,12*scale+vertMargin+move);
+	ct.lineTo(3*scale+horizMargin+move,11*scale+vertMargin+move);
+	ct.lineTo(1*scale+horizMargin+move,9*scale+vertMargin+move);
+	ct.lineTo(0*scale+horizMargin+move,6*scale+vertMargin+move);
+	ct.lineTo(1*scale+horizMargin+move,3*scale+vertMargin+move);
+	ct.lineTo(3*scale+horizMargin+move,1*scale+vertMargin+move);
+	ct.lineTo(6*scale+horizMargin+move,0*scale+vertMargin+move);
+	ct.lineTo(9*scale+horizMargin+move,1*scale+vertMargin+move);
+	ct.lineTo(11*scale+horizMargin+move,3*scale+vertMargin+move);
+	ct.lineTo(12*scale+horizMargin+move,6*scale+vertMargin+move);
+	if(ct.isPointInPath(obsX,obsY) && boopmeter == 0){
+ 		alert('boop');
+		boopmeter=1;
+	}
 	ct.stroke();
 	move += change;
 	if(move<-70){
@@ -93,7 +95,11 @@ function obs(){
 	ct.strokeRect(obsX,obsY,scale,scale);
 	obsX += 3;
 	obsY -= .8;
-
+	if (obsX>farX){
+		obsX = 5;
+		obsY = height-scale*2;
+	}
+	
 }
 
 });
