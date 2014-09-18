@@ -123,7 +123,7 @@ function obs(){
     		obsWidth = Math.floor((Math.random() * 50) + 20);
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
-	obsX += .001*width*obsChange;
+	obsX += .0005*width*obsChange;
 	obsY -= .8*obsChange;
 	if (obsX>farX){
 		if(boopmeter == 0){
