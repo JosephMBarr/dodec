@@ -119,8 +119,8 @@ function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
     		randobs = 0
-    		obsHeight = Math.Random()*scale*2
-    		obsWidth = Math.Random()*scale*2
+    		obsHeight = Math.floor((Math.random() * 100) + 1);
+    		obsWidth = Math.floor((Math.random() * 100) + 1);
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += 3*obsChange;
