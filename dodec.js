@@ -3,8 +3,10 @@ var width = $(window).width();
 var farX = width;
 var lowY = height;
 var scale = 25;
+var obsHeight = 1;
+var obsWidth = 1;
 var obsX = 5;
-var obsY = height-scale*2;
+var obsY = height-obsHeight;
 var horizMargin = width-12*scale-5; 
 var vertMargin = height/2-12*scale+25;
 var move = 0;
@@ -14,8 +16,7 @@ var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
-var obsHeight = 1
-var obsWidth = 1
+
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
@@ -137,7 +138,7 @@ function obs(){
 			obsChange =Math.pow((score+1),2);
 		}
 		obsX = 5;
-		obsY = height-scale*2;
+		obsY = height-obsHeight;
 		boopmeter=0
 		randobs=1
 	}
