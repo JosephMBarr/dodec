@@ -35,12 +35,15 @@ function animate(){
 	text();
 	if(lives != 0){
 		requestAnimationFrame(animate);
+		if(score > hiscore){
+			localStorage.setItem('hiscore',score);
+		}
 	}else{
 		ct.clearRect(-width,-height,width*2,height*2);
 		splash();
 	}
 }
-
+var hiscore = localStorage.getItem('hiscore');
 
 
 //draw hill down which boulder will roll as well as background
@@ -60,6 +63,8 @@ function hill(){
 function text(){
 	ct.fillText(score+" pts",100,100);
 	ct.fillText(lives+" lives",300,100);
+	
+	ct.fillText("High score: "+hiscore,500,100);
 }
 function drawDodec(){
 	ct.strokeStyle="#E5E4E2";
