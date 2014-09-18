@@ -121,6 +121,8 @@ function obs(){
     		randobs = 0
     		obsHeight = Math.floor((Math.random() * 50) + 20);
     		obsWidth = Math.floor((Math.random() * 50) + 20);
+    		obsX = 5
+    		obsY += obsHeight
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
