@@ -106,7 +106,7 @@ function obs(){
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
-			obsChange += .2/score;
+			obsChange += .2;
 		}
 		obsX = 5;
 		obsY = height-scale*2;
