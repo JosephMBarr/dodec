@@ -102,11 +102,11 @@ function obs(){
     ct.strokeStyle="#E5E4E2";
 	ct.strokeRect(obsX,obsY,scale,scale);
 	obsX += 3*obsChange;
-	obsY -= .8*obsChange;
+	obsY -= 2*obsChange;
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
-			obsChange +=.5;
+			obsChange +=1/score;
 		}
 		obsX = 5;
 		obsY = height-scale*2;
