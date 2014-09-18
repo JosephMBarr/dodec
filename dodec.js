@@ -13,6 +13,9 @@ var boopmeter=0;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
+var randobs = 1;
+var obsHeight = 1
+var obsWidth = 1
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
@@ -114,7 +117,12 @@ function dodec(){
 }
 function obs(){
     ct.strokeStyle="#E5E4E2";
-	ct.strokeRect(obsX,obsY,scale,scale);
+    	if(randobs==1){
+    		randobs = 0
+    		obsHeight = Math.Random()*scale*2
+    		obsWidth = Math.Random()*scale*2
+    	}
+	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += 3*obsChange;
 	obsY -= .8*obsChange;
 	if (obsX>farX){
@@ -125,6 +133,7 @@ function obs(){
 		obsX = 5;
 		obsY = height-scale*2;
 		boopmeter=0
+		randobs=1
 	}
 	
 }
