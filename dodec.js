@@ -128,10 +128,7 @@ function obs(){
     		randobs = 0
     		obsY -= obsHeight
     	}
-    	ct.save();
-    	ct.rotate(-20*Math.PI/180);
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
-	ct.restore();
 	obsX += .0025*width*obsChange;
 	obsY -= .00125*height*obsChange;
 	if (obsX>farX){
