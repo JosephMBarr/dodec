@@ -124,7 +124,7 @@ function obs(){
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
-	obsY -= .0014*height*obsChange;
+	obsY -= .00125*height*obsChange;
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
