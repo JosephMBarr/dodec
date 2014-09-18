@@ -13,13 +13,12 @@ var boopmeter=0;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
-
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
 hill();
-requestAnimationFrame(animate);
+splash();
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
@@ -27,11 +26,16 @@ c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
 ct.font="40px Lucida Console";
 ct.fillStyle='#E5E4E2';
+
 function animate(){
 	dodec();
-	ct.fillText(score+" pts",100,100);
-	ct.fillText(lives+" lives",300,100);
-	requestAnimationFrame(animate);
+	text();
+	if(lives != 0){
+		requestAnimationFrame(animate);
+	}else{
+		ct.clearRect(-width,-height,width*2,height*2);
+		splash();
+	}
 }
 
 
@@ -49,6 +53,10 @@ function hill(){
 	ctx2.moveTo(farX, lowY/2)
 	ctx2.lineTo(0,lowY);
 	ctx2.stroke();
+}
+function text(){
+	ct.fillText(score+" pts",100,100);
+	ct.fillText(lives+" lives",300,100);
 }
 function drawDodec(){
 	ct.strokeStyle="#E5E4E2";
@@ -68,6 +76,10 @@ function drawDodec(){
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	if(ct.isPointInPath(obsX,obsY) && boopmeter == 0){
  		alert('boop');
+ 		if(lives == 0){
+ 			ct.clearRect(-width,-height,width*2,height*2);
+ 			splash();
+ 		}
  		lives -= 1;
 		boopmeter=1;
 	}
@@ -113,6 +125,38 @@ function obs(){
 		boopmeter=0
 	}
 	
+}
+function splash(){
+	var clickX;
+	var clickY;
+	document.addEventListener('click',function(event){
+		clickX = event.clientX;
+		clickY = event.clientY;
+		if(sct.isPointInPath(clickX,clickY)){
+			sct.clearRect(0,0,width,height);
+			animate();
+	}
+	});
+	var splashCanvas=document.getElementById("splash");
+	splashCanvas.setAttribute("height",height);
+	splashCanvas.setAttribute("width",width);
+	var sct = splashCanvas.getContext("2d");
+	sct.font="70px Lucida Console";
+	sct.fillStyle='#E5E4E2';
+	sct.strokeStyle='#E5E4E2';
+	sct.lineWidth=5;
+	var title = "dodec";
+	var play = "play"
+	var titleWidth = sct.measureText(title).width;
+	sct.fillText(title,100,height/2);
+	sct.font="20px Lucida Console";
+	var playWidth = sct.measureText(play).width;
+	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
+	sct.rect(200+titleWidth,height/2-50,150,50);
+	sct.stroke();
+	
+	
+
 }
 
 });
