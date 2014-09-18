@@ -122,7 +122,7 @@ function obs(){
     		obsHeight = Math.floor((Math.random() * 100) + 1);
     		obsWidth = Math.floor((Math.random() * 100) + 1);
     	}
-	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
+	ct.strokeRect(obsX,obsY,100,100);
 	obsX += 3*obsChange;
 	obsY -= .8*obsChange;
 	if (obsX>farX){
