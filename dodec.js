@@ -77,7 +77,7 @@ function drawDodec(){
 	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin+move);
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
-	if(ct.isPointInPath(obsX,obsY) && boopmeter == 0){
+	if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
  		obsChange-=1;
 		}
