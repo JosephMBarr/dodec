@@ -38,17 +38,17 @@ function animate(){
 
 //draw hill down which boulder will roll as well as background
 function hill(){
-	var c2=document.getElementById("can2");
-	var ctx2=c2.getContext("2d");
-	c2.setAttribute("height",height);
-	c2.setAttribute("width",width);
-	ctx2.fillStyle="#151B54";
-	ctx2.fillRect(0,0,farX,lowY);
-	ctx2.strokeStyle="#E5E4E2";
-	ctx2.beginPath();
-	ctx2.moveTo(farX, lowY/2)
-	ctx2.lineTo(0,lowY);
-	ctx2.stroke();
+	var c3=document.getElementById("can3");
+	var ctx3=c3.getContext("2d");
+	c3.setAttribute("height",height);
+	c3.setAttribute("width",width);
+	ctx3.fillStyle="#151B54";
+	ctx3.fillRect(0,0,farX,lowY);
+	ctx3.strokeStyle="#E5E4E2";
+	ctx3.beginPath();
+	ctx3.moveTo(farX, lowY/2)
+	ctx3.lineTo(0,lowY);
+	ctx3.stroke();
 }
 function drawDodec(){
 	ct.strokeStyle="#E5E4E2";
