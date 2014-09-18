@@ -3,8 +3,8 @@ var width = $(window).width();
 var farX = width;
 var lowY = height;
 var scale = 25;
-var obsHeight = 1;
-var obsWidth = 1;
+var obsHeight = Math.floor((Math.random() * 50) + 20);
+var obsWidth = Math.floor((Math.random() * 50) + 20);
 var obsX = 5;
 var obsY = height-obsHeight;
 var horizMargin = width-12*scale-5; 
@@ -16,6 +16,7 @@ var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
+
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
@@ -125,16 +126,19 @@ function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
     		randobs = 0
-    		obsHeight = Math.floor((Math.random() * 50) + 20);
-    		obsWidth = Math.floor((Math.random() * 50) + 20);
     		obsY -= obsHeight
     	}
+    	ct.save();
+    	ct.rotate(-20*Math.PI/180);
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
+	ct.restore();
 	obsX += .0025*width*obsChange;
 	obsY -= .00125*height*obsChange;
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
+			obsHeight = Math.floor((Math.random() * 50) + 20);
+    			obsWidth = Math.floor((Math.random() * 50) + 20);
 			obsChange =Math.pow((score+1),2);
 		}
 		obsX = 5;
@@ -172,10 +176,9 @@ function splash(){
 	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
-	
-	
-
 }
+	    	var obsHeight = Math.floor((Math.random() * 50) + 20);
+    		var obsWidth = Math.floor((Math.random() * 50) + 20);
 
 });
 
