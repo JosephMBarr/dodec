@@ -124,15 +124,15 @@ function obs(){
         if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
  		        obsChange-=1;
-                        obsX = 5;
-		        obsY = height-obsHeight;
-		        boopmeter=0;
-		        randobs=1
 		}
  		if(lives == 0){
  			ct.clearRect(-width,-height,width*2,height*2);
  			splash();
  		}
+                obsX = 5;
+		obsY = height-obsHeight;
+		boopmeter=0;
+		randobs=1;
  		lives -= 1;
 		boopmeter=1;
 	}
