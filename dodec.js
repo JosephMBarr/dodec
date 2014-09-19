@@ -87,6 +87,8 @@ function drawDodec(){
 	if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
  		obsChange-=1;
+                obsX = 5;
+		obsY = height-obsHeight;
 		}
  		if(lives == 0){
  			ct.clearRect(-width,-height,width*2,height*2);
