@@ -121,7 +121,8 @@ function obs(){
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
-	obsY -= .00125*height*obsChange-obsHeight;
+	obsY -= .00125*height*obsChange;
+	obsY -= obsHeight
         if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
  		        obsChange-=1;
