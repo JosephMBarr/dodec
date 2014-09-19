@@ -116,6 +116,14 @@ function dodec(){
 		}
 	});
 }
+function clickHandler(event){
+	clickX = event.clientX;
+	clickY = event.clientY;
+	if(sct.isPointInPath(clickX,clickY)){
+		sct.clearRect(0,0,width,height);
+		animate();
+        }
+}
 function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
@@ -172,14 +180,6 @@ function splash(){
 	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
-}
-function clickHandler(event){
-	clickX = event.clientX;
-	clickY = event.clientY;
-	if(sct.isPointInPath(clickX,clickY)){
-		sct.clearRect(0,0,width,height);
-		animate();
-        }
 }
 
 });
