@@ -174,8 +174,6 @@ function splash(){
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
 }
-	    	var obsHeight = Math.floor((Math.random() * 50) + 20);
-    		var obsWidth = Math.floor((Math.random() * 50) + 20);
 
 });
 
