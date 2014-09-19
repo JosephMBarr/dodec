@@ -136,7 +136,7 @@ function obs(){
 			score += 1;
 			obsHeight = Math.floor((Math.random() * 50) + 20);
     			obsWidth = Math.floor((Math.random() * 50) + 20);
-			obsChange =Math.pow((score+1),1.5);
+			obsChange =Math.pow((score+1),2);
 		}
 		obsX = 5;
 		obsY = height-obsHeight;
