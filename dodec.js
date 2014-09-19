@@ -89,6 +89,8 @@ function drawDodec(){
  		obsChange-=1;
                 obsX = 5;
 		obsY = height-obsHeight;
+		boopmeter=0
+		randobs=1
 		}
  		if(lives == 0){
  			ct.clearRect(-width,-height,width*2,height*2);
