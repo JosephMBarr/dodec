@@ -144,7 +144,7 @@ function obs(){
 			obsChange =(score+1)*1.5;
 		}
 		obsX = 5;
-		obsY = height-obsHeight;
+		obsY = height-obsHeight-10;
 		boopmeter=0
 		randobs=1
 	}
