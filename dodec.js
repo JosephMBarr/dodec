@@ -16,7 +16,6 @@ var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
-var sct;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -32,6 +31,10 @@ c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
 ct.font="40px Lucida Console";
 ct.fillStyle='#E5E4E2';
+var splashCanvas=document.getElementById("splash");
+splashCanvas.setAttribute("height",height);
+splashCanvas.setAttribute("width",width);
+var sct = splashCanvas.getContext("2d");
 
 function animate(){
 	dodec();
@@ -156,10 +159,6 @@ function splash(){
 	var clickY;
 	document.addEventListener('click',clickHandler(event));
         document.removeEventListener('click',clickHandler(event));
-	var splashCanvas=document.getElementById("splash");
-	splashCanvas.setAttribute("height",height);
-	splashCanvas.setAttribute("width",width);
-	sct = splashCanvas.getContext("2d");
 	sct.font="70px Lucida Console";
 	sct.fillStyle='#E5E4E2';
 	sct.strokeStyle='#E5E4E2';
