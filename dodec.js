@@ -135,7 +135,7 @@ function obs(){
 		if(boopmeter == 0){
 			score += 1;
     			obsWidth = Math.floor((Math.random() * 50) + 20);
-			obsChange =score*(score/2);
+			obsChange =(score+1)*((score+1)/2);
 		}
 		obsX = 5;
 		obsY = height-obsHeight;
