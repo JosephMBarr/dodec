@@ -158,14 +158,15 @@ function splash(){
 		if(sct.isPointInPath(clickX,clickY)){
 			sct.clearRect(0,0,width,height);
 			animate();
-	}
+                }
+	});
         document.removeEventListener('click',function(event){
 		clickX = event.clientX;
 		clickY = event.clientY;
 		if(sct.isPointInPath(clickX,clickY)){
 			sct.clearRect(0,0,width,height);
 			animate();
-	}
+	        }
 	});
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
