@@ -121,7 +121,7 @@ function obs(){
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
-	obsY -= .00125*height*obsChange;
+	obsY -= .00125*height*obsChange-obsHeight;
         if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
  		        obsChange-=1;
@@ -144,7 +144,6 @@ function obs(){
 			obsChange =(score+1)*1.5;
 		}
 		obsX = 5;
-		obsY = height-obsHeight-10;
 		boopmeter=0
 		randobs=1
 	}
