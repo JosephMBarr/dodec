@@ -165,8 +165,6 @@ function obs(){
 function splash(){
 	var clickX;
 	var clickY;
-	document.addEventListener('click',clickHandler(event));
-        document.removeEventListener('click',clickHandler(event));
 	sct.font="70px Lucida Console";
 	sct.fillStyle='#E5E4E2';
 	sct.strokeStyle='#E5E4E2';
@@ -180,6 +178,8 @@ function splash(){
 	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
+	document.addEventListener('click',clickHandler(event));
+        document.removeEventListener('click',clickHandler(event));
 }
 
 });
