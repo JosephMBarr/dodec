@@ -165,7 +165,7 @@ function splash(){
 		clickY = event.clientY;
 		if(sct.isPointInPath(clickX,clickY)){
 			sct.clearRect(0,0,width,height);
-			document.addEventListener('click',clickHandler);
+			document.removeEventListener('click',clickHandler);
 			animate();
         	}
 	}
