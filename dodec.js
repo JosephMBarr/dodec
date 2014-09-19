@@ -165,7 +165,7 @@ function splash(){
 		clickY = event.clientY;
 		if(sct.isPointInPath(clickX,clickY)){
 			sct.clearRect(0,0,width,height);
-			document.removeEventListener('click',clickHandler(event));
+			document.removeEventListener('click',clickHandler);
 			animate();
         	}
 	}
@@ -180,7 +180,7 @@ function splash(){
 	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
-	document.addEventListener('click',clickHandler(event));
+	document.addEventListener('click',function(){clickHandler(event);});
 }
 
 });
