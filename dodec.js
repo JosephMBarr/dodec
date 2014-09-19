@@ -86,11 +86,11 @@ function drawDodec(){
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
 		if(obsChange>1){
- 		obsChange-=1;
-                obsX = 5;
-		obsY = height-obsHeight;
-		boopmeter=0
-		randobs=1
+ 		        obsChange-=1;
+                        obsX = 5;
+		        obsY = height-obsHeight;
+		        boopmeter=0;
+		        randobs=1
 		}
  		if(lives == 0){
  			ct.clearRect(-width,-height,width*2,height*2);
