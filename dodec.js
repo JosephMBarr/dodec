@@ -149,25 +149,19 @@ function obs(){
 	}
 	
 }
+function clickHandler(event){
+	clickX = event.clientX;
+	clickY = event.clientY;
+	if(sct.isPointInPath(clickX,clickY)){
+		sct.clearRect(0,0,width,height);
+		animate();
+        }
+}
 function splash(){
 	var clickX;
 	var clickY;
-	document.addEventListener('click',function(event){
-		clickX = event.clientX;
-		clickY = event.clientY;
-		if(sct.isPointInPath(clickX,clickY)){
-			sct.clearRect(0,0,width,height);
-			animate();
-                }
-	});
-        document.removeEventListener('click',function(event){
-		clickX = event.clientX;
-		clickY = event.clientY;
-		if(sct.isPointInPath(clickX,clickY)){
-			sct.clearRect(0,0,width,height);
-			animate();
-	        }
-	});
+	document.addEventListener('click',clickHandler(event));
+        document.removeEventListener('click',clickHandler(event));
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
