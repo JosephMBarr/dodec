@@ -84,21 +84,7 @@ function drawDodec(){
 	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin+move);
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
-	if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
-		if(obsChange>1){
- 		        obsChange-=1;
-                        obsX = 5;
-		        obsY = height-obsHeight;
-		        boopmeter=0;
-		        randobs=1
-		}
- 		if(lives == 0){
- 			ct.clearRect(-width,-height,width*2,height*2);
- 			splash();
- 		}
- 		lives -= 1;
-		boopmeter=1;
-	}
+	
 	ct.stroke();
 	move += change;
 	if(move<-110){
@@ -135,6 +121,21 @@ function obs(){
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
 	obsY -= .00125*height*obsChange;
+        if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
+		if(obsChange>1){
+ 		        obsChange-=1;
+                        obsX = 5;
+		        obsY = height-obsHeight;
+		        boopmeter=0;
+		        randobs=1
+		}
+ 		if(lives == 0){
+ 			ct.clearRect(-width,-height,width*2,height*2);
+ 			splash();
+ 		}
+ 		lives -= 1;
+		boopmeter=1;
+	}
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
