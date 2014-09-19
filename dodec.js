@@ -31,14 +31,7 @@ c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
 ct.font="40px Lucida Console";
 ct.fillStyle='#E5E4E2';
-var splashCanvas=document.getElementById("splash");
-splashCanvas.setAttribute("height",height);
-splashCanvas.setAttribute("width",width);
-var sct = splashCanvas.getContext("2d");
-sct.font="70px Lucida Console";
-sct.fillStyle='#E5E4E2';
-sct.strokeStyle='#E5E4E2';
-sct.lineWidth=5;
+
 
 function animate(){
 	dodec();
@@ -120,14 +113,6 @@ function dodec(){
 		}
 	});
 }
-function clickHandler(event){
-	clickX = event.clientX;
-	clickY = event.clientY;
-	if(sct.isPointInPath(clickX,clickY)){
-		sct.clearRect(0,0,width,height);
-		animate();
-        }
-}
 function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
@@ -167,6 +152,23 @@ function obs(){
 }
 
 function splash(){
+	var splashCanvas=document.getElementById("splash");
+	splashCanvas.setAttribute("height",height);
+	splashCanvas.setAttribute("width",width);
+	var sct = splashCanvas.getContext("2d");
+	sct.font="70px Lucida Console";
+	sct.fillStyle='#E5E4E2';
+	sct.strokeStyle='#E5E4E2';
+	sct.lineWidth=5;
+	function clickHandler(event){
+		clickX = event.clientX;
+		clickY = event.clientY;
+		if(sct.isPointInPath(clickX,clickY)){
+			sct.clearRect(0,0,width,height);
+			document.removeEventListener('click',clickHandler(event));
+			animate();
+        	}
+	}
 	var clickX;
 	var clickY;
 	var title = "dodec";
@@ -179,7 +181,6 @@ function splash(){
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
 	document.addEventListener('click',clickHandler(event));
-        document.removeEventListener('click',clickHandler(event));
 }
 
 });
