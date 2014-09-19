@@ -35,6 +35,10 @@ var splashCanvas=document.getElementById("splash");
 splashCanvas.setAttribute("height",height);
 splashCanvas.setAttribute("width",width);
 var sct = splashCanvas.getContext("2d");
+sct.font="70px Lucida Console";
+sct.fillStyle='#E5E4E2';
+sct.strokeStyle='#E5E4E2';
+sct.lineWidth=5;
 
 function animate(){
 	dodec();
@@ -165,10 +169,6 @@ function obs(){
 function splash(){
 	var clickX;
 	var clickY;
-	sct.font="70px Lucida Console";
-	sct.fillStyle='#E5E4E2';
-	sct.strokeStyle='#E5E4E2';
-	sct.lineWidth=5;
 	var title = "dodec";
 	var play = "play"
 	var titleWidth = sct.measureText(title).width;
