@@ -3,10 +3,10 @@ var width = $(window).width();
 var farX = width;
 var lowY = height;
 var scale = 25;
-var obsHeight = Math.floor((Math.random() * 50) + 20);
+var obsHeight = scale;
 var obsWidth = Math.floor((Math.random() * 50) + 20);
 var obsX = 5;
-var obsY = height-obsHeight*2;
+var obsY = height;
 var horizMargin = width-12*scale-5; 
 var vertMargin = height/2-12*scale+25;
 var move = 0;
@@ -134,7 +134,6 @@ function obs(){
 	if (obsX>farX){
 		if(boopmeter == 0){
 			score += 1;
-			obsHeight = Math.floor((Math.random() * 50) + 20);
     			obsWidth = Math.floor((Math.random() * 50) + 20);
 			obsChange =Math.pow((score+1),2);
 		}
