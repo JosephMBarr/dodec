@@ -137,7 +137,7 @@ function obs(){
 	}
 	if (obsX>farX){
 			score += 1;
-			obsChange =(score+1)*1.2;
+			obsChange =(score+5)/(score+1);
 			randobs=1
 	}
 	
