@@ -118,7 +118,7 @@ function obs(){
     		randobs = 0
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 40) + 25);
-    		obsX = -obsWidth;
+    		obsX = 0;
 		obsY = height-obsHeight
     	}
 	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
