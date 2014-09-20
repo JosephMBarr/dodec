@@ -130,12 +130,9 @@ function obs(){
  			ct.clearRect(-width,-height,width*2,height*2);
  			splash();
  		}
-                obsX = 5;
-		obsY = height-obsHeight;
-		boopmeter=0;
-		randobs=1;
  		lives -= 1;
 		boopmeter=1;
+		obsX+=100
 	}
 	if (obsX>farX){
 		if(boopmeter == 0){
