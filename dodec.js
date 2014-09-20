@@ -85,7 +85,7 @@ function drawDodec(){
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	
-	ct.fill();
+	ct.stroke();
 	move += change;
 	if(move<-110){
 		change = 3;
@@ -121,7 +121,7 @@ function obs(){
     		obsX = 0;
 		obsY = height-obsHeight
     	}
-	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
+	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
 	obsY -= .00125*height*obsChange;
         if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
