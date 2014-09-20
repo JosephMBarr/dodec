@@ -132,7 +132,8 @@ function obs(){
  		}
  		lives -= 1;
 		boopmeter=1;
-		obsX+=100
+		obsX = -obsWidth;
+		obsY = height-obsHeight
 	}
 	if (obsX>farX){
 		if(boopmeter == 0){
