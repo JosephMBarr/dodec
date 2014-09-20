@@ -11,7 +11,6 @@ var horizMargin = width-12*scale-5;
 var vertMargin = height/2-12*scale+25;
 var move = 0;
 var change = 0;
-var boopmeter=0;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
@@ -117,7 +116,10 @@ function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
     		randobs = 0
-    		
+    		obsWidth = Math.floor((Math.random() * 50) + 20);
+    		obsHeight = Math.floor((Math.random() * 50) + 20);
+    		obsX = -obsWidth;
+		obsY = height-obsHeight
     	}
 	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
@@ -131,21 +133,12 @@ function obs(){
  			splash();
  		}
  		lives -= 1;
-		boopmeter=1;
-		obsX = -obsWidth;
-		obsY = height-obsHeight
+		randobs=1
 	}
 	if (obsX>farX){
-		if(boopmeter == 0){
 			score += 1;
-    			obsWidth = Math.floor((Math.random() * 50) + 20);
-    			obsHeight = Math.floor((Math.random() * 50) + 20);
 			obsChange =(score+1)*1.5;
-		}
-		obsX = -obsWidth;
-		obsY = height-obsHeight
-		boopmeter=0
-		randobs=1
+			randobs=1
 	}
 	
 }
