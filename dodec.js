@@ -8,7 +8,7 @@ var obsWidth = scale;
 var obsX = 5;
 var obsY = height-scale;
 var horizMargin = width-12*scale-5; 
-var vertMargin = height/2-12*scale+25;
+var vertMargin = height/2-12*scale+50;
 var move = 0;
 var change = 0;
 var score = 0;
@@ -85,7 +85,7 @@ function drawDodec(){
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
 	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	
-	ct.stroke();
+	ct.fill();
 	move += change;
 	if(move<-110){
 		change = 3;
@@ -121,7 +121,7 @@ function obs(){
     		obsX = 0;
 		obsY = height-obsHeight
     	}
-	ct.strokeRect(obsX,obsY,obsHeight,obsWidth);
+	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += .0025*width*obsChange;
 	obsY -= .00125*height*obsChange;
         if(ct.isPointInPath(obsX+obsWidth,obsY) && boopmeter == 0){
