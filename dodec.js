@@ -116,8 +116,8 @@ function obs(){
     ct.strokeStyle="#E5E4E2";
     	if(randobs==1){
     		randobs = 0
-    		obsWidth = Math.floor((Math.random() * 50) + 20);
-    		obsHeight = Math.floor((Math.random() * 50) + 20);
+    		obsWidth = Math.floor((Math.random() * 40) + 25);
+    		obsHeight = Math.floor((Math.random() * 40) + 25);
     		obsX = -obsWidth;
 		obsY = height-obsHeight
     	}
