@@ -7,9 +7,8 @@ var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
 var obsY = height-scale;
-
-var horizMargin = width-12*scale-5; 
-var a = 12*scale+horizMargin-0*scale+horizMargin;
+var horizMargin = (width)-(12*scale-5); 
+var a = (12*scale);
 var vertMargin = height/2-a
 var move = 0;
 var change = 0;
