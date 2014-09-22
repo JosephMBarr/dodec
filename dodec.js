@@ -138,7 +138,7 @@ function obs(){
  		lives -= 1;
 		randobs=1
 	}
-	if (obsX>farX){
+	if (obsX>width){
 			score += 1;
 			obsChange = Math.sqrt(score+1);
 			randobs=1
