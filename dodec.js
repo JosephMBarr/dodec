@@ -185,5 +185,4 @@ function splash(){
 	sct.stroke();
 	document.addEventListener('click',clickHandler);
 }
-
 });
