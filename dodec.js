@@ -7,6 +7,7 @@ var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
 var obsY = height-scale;
+var angle = Math.atan((height/2)/(width));
 var horizMargin = (width)-(12*scale-5); 
 var a = (12*scale);
 var vertMargin = height/2-a
@@ -69,7 +70,6 @@ function hill(){
 function text(){
 	ct.fillText(score+" pts",100,100);
 	ct.fillText(lives+" lives",300,100);
-	
 	ct.fillText("High score: "+hiscore,500,100);
 }
 function drawDodec(){
