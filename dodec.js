@@ -1,7 +1,6 @@
 var height = $(window).height();
 var width = $(window).width();
-var farX = width;
-var lowY = height;
+//Removed farX and lowY - Don't use. Also, we need to start commenting.
 var scale = 25;
 var obsHeight = scale;
 var obsWidth = scale;
@@ -60,11 +59,11 @@ function hill(){
 	c2.setAttribute("height",height);
 	c2.setAttribute("width",width);
 	ctx2.fillStyle="#151B54";
-	ctx2.fillRect(0,0,farX,lowY);
+	ctx2.fillRect(0,0,width,height);
 	ctx2.strokeStyle="#E5E4E2";
 	ctx2.beginPath();
-	ctx2.moveTo(farX, lowY/2)
-	ctx2.lineTo(0,lowY);
+	ctx2.moveTo(width, height/2)
+	ctx2.lineTo(0,height);
 	ctx2.stroke();
 }
 function text(){
@@ -123,12 +122,12 @@ function obs(){
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 40) + 25);
     		obsX = 0;
-		obsY = lowY-obsHeight
+		obsY = height-obsHeight
     	}
 	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
-	obsX += .0025*width*obsChange;
-	obsY -= .00125*height*obsChange;
-        if(ct.isPointInPath(obsX+obsWidth,obsY)){
+	obsX += width*obsChange/400;
+	obsY -= height*obsChange/800;
+        if(ct.isPointInPath(obsX+obsWidth,obsY-obsHeight)){
 		if(obsChange>1){
  		        obsChange-=1;
 		}
