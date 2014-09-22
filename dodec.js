@@ -34,6 +34,9 @@ ct.fillStyle='#E5E4E2';
 
 function animate(){
 	dodec();
+        if(localStorage.getItem('hiscore') == null){
+                localStorage.setItem('hiscore',0);
+        }
 	text();
 	if(lives != 0){
 		requestAnimationFrame(animate);
