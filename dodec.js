@@ -134,7 +134,7 @@ function obs(){
  		if(lives == 0){
  			ct.clearRect(-width,-height,width*2,height*2);
  			splash();
-                        lives = 3
+                        
  		}
  		lives -= 1;
 		randobs=1
@@ -149,6 +149,7 @@ function obs(){
 }
 
 function splash(){
+        lives=3
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
