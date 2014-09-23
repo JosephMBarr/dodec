@@ -6,16 +6,16 @@ var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
 var obsY = height-scale;
-var angle = Math.atan((height/2)/(width));
 var horizMargin = (width)-(12*scale-5); 
 var a = (12*scale);
-var vertMargin = height/(2-a)+40
+var vertMargin = 0;
 var move = 0;
 var change = 0;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
+var inPos = false;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -60,11 +60,6 @@ function hill(){
 	c2.setAttribute("width",width);
 	ctx2.fillStyle="#151B54";
 	ctx2.fillRect(0,0,width,height);
-	ctx2.strokeStyle="#E5E4E2";
-	ctx2.beginPath();
-	ctx2.moveTo(width, height/2)
-	ctx2.lineTo(0,height);
-	ctx2.stroke();
 }
 function text(){
 	ct.fillText(score+" pts",100,100);
@@ -86,10 +81,22 @@ function drawDodec(){
 	ct.lineTo(6*scale+horizMargin,0*scale+vertMargin+move);
 	ct.lineTo(9*scale+horizMargin,1*scale+vertMargin+move);
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
-	ct.lineTo(12*scale+horizMargin,6*scale+vertMargin+move);
-	
+	ct.closePath();
 	ct.fill();
+	ct.beginPath();
+	ct.moveTo(width, height/2)
+	ct.lineTo(0,height);
+	ct.stroke();
 	move += change;
+	if(!inPos){
+		if(ct.isPointInPath(6*scale+horizMargin,0*scale+vertMargin+move)){
+			inPos = true;
+		}
+		else{
+			change = -3;
+		}
+		
+	}
 	if(move<-110){
 		change = 3;
 	}
