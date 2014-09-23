@@ -87,20 +87,18 @@ function drawDodec(){
 	ct.moveTo(width, height/2)
 	ct.lineTo(0,height);
 	move += change;
-	if(inPos == false){
+	change = 3;
+	if(!inPos){
 		if(ct.isPointInPath(6*scale+horizMargin,0*scale+vertMargin+move)){
 			ct.stroke();
 			inPos = true;
+			change = 0
 		}
-		else{
-			change = 3;
-		}
-		
 	}
 	if(move<-110){
 		change = 3;
 	}
-	if(move == 0){
+	if(move == 0 && inPos){
 		change = 0;
 	}
 }
@@ -111,9 +109,6 @@ function dodec(){
 	obs();
 	ct.save();
 	drawDodec();
-	ct.translate(decSquare/2+horizMargin,decSquare/2+vertMargin);
-	ct.rotate(-degrees*Math.PI/180);
-	ct.translate(-decSquare/2-horizMargin,-decSquare/2-vertMargin);
 	ct.restore();
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
