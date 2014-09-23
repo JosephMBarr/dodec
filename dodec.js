@@ -2,6 +2,7 @@ var height = $(window).height();
 var width = $(window).width();
 //Removed farX and lowY - Don't use. Also, we need to start commenting.
 //comments are for nurds
+//U Broke it Joseph
 var scale = 25;
 var obsHeight = scale;
 var obsWidth = scale;
