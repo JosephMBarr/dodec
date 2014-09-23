@@ -92,8 +92,6 @@ function drawDodec(){
 	move += change;
 	change = 3;
 	if(!inPos){
-		console.log(6*scale+horizMargin);
-		console.log(0*scale+vertMargin+move);
 		if(ct.isPointInPath(6*scale+horizMargin,0*scale+vertMargin+move)){
 
 			inPos = true;
