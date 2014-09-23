@@ -127,7 +127,7 @@ function obs(){
 	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
-        if(ct.isPointInPath(obsX+obsWidth,obsY)){
+        if(ct.isPointInPath(obsX+obsWidth,obsY-obsHeight)){
 		if(obsChange>1){
  		        obsChange-=1;
 		}
