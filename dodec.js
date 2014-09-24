@@ -14,7 +14,7 @@ var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
-var inPos = false;
+var inPos = 0;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -88,15 +88,15 @@ function drawDodec(){
 	ct.stroke();
 	move += change;
 	change = 1;
-	if(inPos === false && ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
+	if(inPos == 0 && ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
 			console.log(inPos);
-			inPos = true;
+			inPos = 1;
 			change = 0;
 	}
 	if(move<-110){
 		change = 3;
 	}
-	if(move == 0 && inPos){
+	if(move == 0 && inPos == 1;){
 		change = 0;
 	}
 }
