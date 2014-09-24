@@ -88,7 +88,7 @@ function drawDodec(){
 	ct.stroke();
 	move += change;
 	change = 3;
-	if(inPos){
+	if(inPos == false){
 		if(ct.isPointInPath(6*scale+horizMargin,0*scale+vertMargin+move)){
 			inPos = true;
 			change = 0
