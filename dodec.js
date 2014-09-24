@@ -148,12 +148,6 @@ function obs(){
 }
 
 function splash(){
-        move = 0;
-        change = 1;
-        score = 0;
-        lives = 3;
-        obsChange = 1;
-        randobs = 1;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
