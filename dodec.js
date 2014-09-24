@@ -89,7 +89,7 @@ function drawDodec(){
 	move += change;
 	change = 3;
 	if(inPos == false){
-		if(ct.isPointInPath(6*scale+horizMargin,0*scale+vertMargin+move)){
+		if(ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
 			inPos = true;
 			change = 0
 		}
