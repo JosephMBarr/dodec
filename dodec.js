@@ -87,12 +87,10 @@ function drawDodec(){
 	ct.lineTo(0,height);
 	ct.stroke();
 	move += change;
-	change = 3;
-	if(inPos == false){
-		if(ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
+	change = 1;
+	if(inPos === false && ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
 			inPos = true;
-			change = 0
-		}
+			change = 0;
 	}
 	if(move<-110){
 		change = 3;
