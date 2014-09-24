@@ -96,7 +96,7 @@ function drawDodec(){
 	if(move<-110){
 		change = 3;
 	}
-	if(move == 0 && inPos == 1;){
+	if(move == 0 && inPos == 1){
 		change = 0;
 	}
 }
