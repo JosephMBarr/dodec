@@ -9,7 +9,7 @@ var horizMargin = (width)-(12*scale-5);
 var a = (12*scale);
 var vertMargin = 0;
 var move = 0;
-var change = 0;
+var change = 1;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
@@ -87,7 +87,6 @@ function drawDodec(){
 	ct.lineTo(0,height);
 	ct.stroke();
 	move += change;
-	change = 1;
 	if(inPos == 0 && ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
 			console.log(inPos);
 			inPos = 1;
