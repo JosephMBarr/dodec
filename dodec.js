@@ -17,6 +17,7 @@ var randobs = 1;
 var inPos = false;
 var justUnder;
 var red;
+var hillY = 0;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -35,7 +36,9 @@ ct.fillStyle='#E5E4E2';
 
 
 function animate(){
-	getLow();
+        if(inPos === false){
+	        getLow();
+        }
 	dodec();
         if(localStorage.getItem('hiscore') == null){
                 localStorage.setItem('hiscore',0);
@@ -75,6 +78,7 @@ function getLow(){
 	if(red > 100 && inPos === false){
 		change = 0;
 		inPos = true;
+                hillY = move;
 	}
 }
 function drawDodec(){
@@ -101,9 +105,8 @@ function drawDodec(){
 	ct.fill();
 
 	move += change;
-	if(move<20){
+	if(move<hillY){
 		change = 3;
-		inPos = false;
 	}
 }
 function dodec(){
@@ -156,6 +159,9 @@ function obs(){
 }
 
 function splash(){
+        score = 0;
+        move = 0;
+        change = 0;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
