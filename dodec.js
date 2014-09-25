@@ -14,7 +14,7 @@ var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
-var inPos = false;
+var searching = true;
 var justUnder;
 var red;
 var hillY = 0;
@@ -36,9 +36,9 @@ ct.fillStyle='#E5E4E2';
 
 
 function animate(){
-        if(inPos === false){
-	        getLow();
-        }
+	if(searching){
+		getLow();
+	}
 	dodec();
         if(localStorage.getItem('hiscore') == null){
                 localStorage.setItem('hiscore',0);
@@ -76,9 +76,8 @@ function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
 	red = justUnder.data[0];
 	if(red > 100){
-		change = 0;
-		inPos = true;
-                hillY = move;
+		searching = false;
+        hillY = move;
 	}
 }
 function drawDodec(){
@@ -105,7 +104,11 @@ function drawDodec(){
 	ct.fill();
 
 	move += change;
-	if(move<hillY){
+	if(move > hillY && searching == false){
+		change = 0;
+	}
+	console.log(hillY - move);
+	if(hillY - move > height/8){
 		change = 3;
 	}
 }
@@ -160,8 +163,6 @@ function obs(){
 
 function splash(){
         score = 0;
-        move = 0;
-        change = 0;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
