@@ -104,11 +104,11 @@ function drawDodec(){
 	ct.fill();
 
 	move += change;
-	if(move > hillY && searching == false){
+	if(move >= hillY && searching == false){
 		change = 0;
 	}
 	console.log(hillY - move);
-	if(hillY - move >= height/8){
+	if(hillY - move > height/8){
 		change = 3;
 	}
 }
