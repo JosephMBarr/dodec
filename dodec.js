@@ -8,13 +8,15 @@ var obsY = height-scale;
 var horizMargin = (width)-(12*scale-5); 
 var a = (12*scale);
 var vertMargin = 0;
-var move = 0;
+var move = 1;
 var change = 1;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
 var randobs = 1;
-var inPos = 0;
+var inPos = false;
+var justUnder;
+var red;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -33,6 +35,7 @@ ct.fillStyle='#E5E4E2';
 
 
 function animate(){
+	getLow();
 	dodec();
         if(localStorage.getItem('hiscore') == null){
                 localStorage.setItem('hiscore',0);
@@ -59,13 +62,27 @@ function hill(){
 	c2.setAttribute("width",width);
 	ctx2.fillStyle="#151B54";
 	ctx2.fillRect(0,0,width,height);
+
 }
 function text(){
 	ct.fillText(score+" pts",100,100);
 	ct.fillText(lives+" lives",300,100);
 	ct.fillText("High score: "+hiscore,500,100);
 }
+function getLow(){
+	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
+	red = justUnder.data[0];
+	if(red > 100 && inPos === false){
+		change = 0;
+		inPos = true;
+	}
+}
 function drawDodec(){
+	ct.strokeStyle = "#E5E4E2";
+	ct.beginPath();
+	ct.moveTo(width, height/2)
+	ct.lineTo(0,height);
+	ct.stroke();
 	ct.strokeStyle="#E5E4E2";
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+vertMargin+move);
@@ -82,21 +99,11 @@ function drawDodec(){
 	ct.lineTo(11*scale+horizMargin,3*scale+vertMargin+move);
 	ct.closePath();
 	ct.fill();
-	ct.beginPath();
-	ct.moveTo(width, height/2)
-	ct.lineTo(0,height);
-	ct.stroke();
+
 	move += change;
-	if(ct.isPointInPath(6*scale+horizMargin,12*scale+vertMargin+move)){
-			console.log(inPos);
-			inPos = 1;
-			change = 0;
-	}
-	if(move<-110){
+	if(move<20){
 		change = 3;
-	}
-	if(move == 0 && inPos == 1){
-		change = 0;
+		inPos = false;
 	}
 }
 function dodec(){
@@ -121,24 +128,25 @@ function obs(){
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 40) + 25);
     		obsX = 0;
-		obsY = height-obsHeight
+			obsY = height-obsHeight
     	}
+    
 	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
+	ct.stroke();
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
-        if(ct.isPointInPath(obsX+obsWidth,obsY)){
-		if(obsChange>1){
+	if(ct.isPointInPath(obsX+obsWidth,obsY)){
+			if(obsChange>1){
  		        obsChange-=1;
-		}
- 		if(lives == 0){
- 			ct.clearRect(-width,-height,width*2,height*2);
- 			splash();
+			}
+ 			if(lives < 1){
+ 				ct.clearRect(-width,-height,width*2,height*2);
+ 				splash();
                         
- 		}
- 		lives -= 1;
-		randobs=1
-
-	}
+ 			}
+ 			lives -= 1;
+			randobs=1;
+		}
 	if (obsX>width){
 			score += 1;
 			obsChange = Math.sqrt(score+1);
@@ -177,5 +185,6 @@ function splash(){
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
 	document.addEventListener('click',clickHandler);
+	lives = 3;
 }
 });
