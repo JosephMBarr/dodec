@@ -130,7 +130,7 @@ function dodec(){
 	ct.restore();
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
-		if(thekey == 38 && change == 0){
+		if((thekey == 38 ||thekey == 32) && change == 0){
 			change = -3;
 		}
 	});
