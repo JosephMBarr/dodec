@@ -8,8 +8,8 @@ var obsY = height-scale;
 var horizMargin = (width)-(12*scale-5); 
 var a = (12*scale);
 var vertMargin = 0;
-var move = 1;
-var change = 1;
+var move = 3;
+var change = 2;
 var score = 0;
 var lives = 3;
 var obsChange = 1;
@@ -18,6 +18,7 @@ var searching = true;
 var justUnder;
 var red;
 var hillY = 0;
+var obsable = false;
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -78,6 +79,7 @@ function getLow(){
 	if(red > 100){
 		searching = false;
         hillY = move;
+        obsable = true;
 	}
 }
 function drawDodec(){
@@ -107,8 +109,7 @@ function drawDodec(){
 	if(move >= hillY && searching == false){
 		change = 0;
 	}
-	console.log(hillY - move);
-	if(hillY - move > height/8){
+	if(hillY - move >= height/8){
 		change = 3;
 	}
 }
@@ -116,7 +117,9 @@ function dodec(){
 	var decSquare = 12*scale;
 	var degrees = 2;
 	ct.clearRect(-width,-height,width*2,height*2);
-	obs();
+	if(obsable){
+		obs();
+	}
 	ct.save();
 	drawDodec();
 	ct.restore();
@@ -136,7 +139,6 @@ function obs(){
     		obsX = 0;
 			obsY = height-obsHeight
     	}
-    
 	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
 	ct.stroke();
 	obsX += width*obsChange/400;
