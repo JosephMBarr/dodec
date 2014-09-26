@@ -88,7 +88,7 @@ function drawDodec(){
 	ct.moveTo(width, height/2)
 	ct.lineTo(0,height);
 	ct.stroke();
-	ct.strokeStyle="#E5E4E2";
+	ct.fillStyle="#E5E4E2";
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+vertMargin+move);
 	ct.lineTo(11*scale+horizMargin,9*scale+vertMargin+move);
