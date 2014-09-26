@@ -200,5 +200,6 @@ function splash(){
 	sct.stroke();
 	document.addEventListener('click',clickHandler);
 	lives = 3;
+	drawDodec();
 }
 });
