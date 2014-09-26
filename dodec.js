@@ -148,7 +148,7 @@ function obs(){
 	ct.stroke();
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
-	if(ct.isPointInPath(obsX+obsWidth,obsY)){
+	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)||ct.isPointInPath(obsX+(obsWidth/2),obsY)){
 			if(obsChange>1){
  		        obsChange-=1;
 			}
