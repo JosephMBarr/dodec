@@ -19,6 +19,7 @@ var justUnder;
 var red;
 var hillY = 0;
 var obsable = false;
+var pts = 'pts';
 
 
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -69,7 +70,11 @@ function hill(){
 
 }
 function text(){
-	ct.fillText(score+" pts",100,100);
+	pts = 'pts';
+	if(score == 1){
+		pts = 'pt'
+	}
+	ct.fillText(score+" "+pts,100,100);
 	ct.fillText(lives+" lives",300,100);
 	ct.fillText("High score: "+hiscore,500,100);
 }
