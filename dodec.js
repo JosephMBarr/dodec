@@ -4,7 +4,7 @@ var scale = 25;
 var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
-var obsY = height-scale;
+var obsY = height;
 var horizMargin = (width)-(12*scale-5); 
 var a = (12*scale);
 var vertMargin = 0;
@@ -144,7 +144,7 @@ function obs(){
     		obsX = 0;
 		obsY = height-obsHeight
     	}
-	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
+	ct.fillRect(obsX,obsY+obsHeight,obsHeight,obsWidth);
 	ct.stroke();
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
