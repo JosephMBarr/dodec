@@ -1,5 +1,5 @@
-var height = $(window).height();
-var width = $(window).width();
+var height = window.innerHeight;
+var width = window.innerWidth;
 var scale = 25;
 var obsHeight = scale;
 var obsWidth = scale;
@@ -140,11 +140,11 @@ function obs(){
     	if(randobs==1){
     		randobs = 0
     		obsWidth = Math.floor((Math.random() * 40) + 25);
-    		obsHeight = Math.floor((Math.random() * 40) + 25);
+    		obsHeight = Math.floor((Math.random() * 25) + 25);
     		obsX = 0;
-		obsY = height-obsHeight
+		obsY = height-(obsHeight);
     	}
-	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
+	ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 	ct.stroke();
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
