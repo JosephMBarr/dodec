@@ -1,13 +1,25 @@
 
 #can2{
-	top: -2;
   	position:absolute;
+  	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
 }
 #can3{
-	top: -2;
 	position:absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
 }
 #splash{
-	top:-2;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
 	position:absolute;
 }
