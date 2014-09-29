@@ -144,7 +144,7 @@ function obs(){
     		obsX = 0;
 		obsY = height-obsHeight
     	}
-	ct.fillRect(obsX,obsY-obsHeight,obsHeight,obsWidth);
+	ct.fillRect(obsX,obsY,obsHeight,obsWidth);
 	ct.stroke();
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
