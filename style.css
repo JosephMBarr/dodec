@@ -1,25 +1,8 @@
-#can1{
-  border:1px solid #FF0000;
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin:auto;
-}
+
 #can2{
-  border:1px solid #E5E4E2;
-  position:absolute;
-  top:0;
-  bottom:0;
-  left:0;
-  right:0;
-  margin:auto;
+  	position:absolute;
 }
 #can3{
-	position:absolute;
-}
-#obs{
 	position:absolute;
 }
 #splash{
