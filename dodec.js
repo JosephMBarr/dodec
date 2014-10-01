@@ -128,9 +128,11 @@ function dodec(){
 		obs();
 	}
 	drawDodec();
-	$(document).on('vclick',function(){
-		change = -3;
-	});
+	if(change == 0){
+		$(document).on('vclick',function(){
+			change = -3;
+		});
+	}
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
 		if((thekey == 38 ||thekey == 32) && change == 0){
