@@ -103,8 +103,9 @@ function drawDodec(){
 		ct.fillStyle="#FF0000";
 		hurtCounter += 1;
 	}
-	if(hurtCounter > 60){
+	if(hurtCounter > 45){
 		hurt = false;
+		hurtCounter = 0;
 	}
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+move);
