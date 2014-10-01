@@ -179,7 +179,7 @@ function splash(){
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
 	var sct = splashCanvas.getContext("2d");
-	sct.font="70px Lucida Console";
+	sct.font="70px Courier";
 	sct.fillStyle='#E5E4E2';
 	sct.strokeStyle='#E5E4E2';
 	sct.lineWidth=5;
