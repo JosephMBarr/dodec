@@ -35,7 +35,7 @@ var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
-ct.font="40px Lucida Console";
+ct.font="40px Courier";
 ct.fillStyle='#E5E4E2';
 
 
