@@ -23,6 +23,7 @@ var pts = 'pts';
 var mobile = false;
 var hurt = false;
 var hurtCounter = 0;
+$.mobile.loadingMessage = false;
 if(typeof window.orientation !== 'undefined'){
 	mobile = true;
 }
@@ -30,10 +31,8 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
-$.mobile.loadingMessage = false;
 hill();
 splash();
-$.mobile.loadingMessage = false;
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
