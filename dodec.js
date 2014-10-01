@@ -129,7 +129,7 @@ function dodec(){
 	}
 	drawDodec();
 	if(mobile){
-		$(document).on('vclick',function(event){
+		$(document).on('vclick',function(){
 			change = -3;
 		});
 	}
