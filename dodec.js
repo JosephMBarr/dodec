@@ -32,6 +32,7 @@ window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 $(document).ready(function(){
 hill();
 splash();
+$.mobile.loadingMessage = false;
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
