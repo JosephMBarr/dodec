@@ -198,7 +198,7 @@ function splash(){
 	var play = "play"
 	var titleWidth = sct.measureText(title).width;
 	sct.fillText(title,100,height/2);
-	sct.font="20px Lucida Console";
+	sct.font="20px Courier";
 	var playWidth = sct.measureText(play).width;
 	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
 	sct.rect(200+titleWidth,height/2-50,150,50);
