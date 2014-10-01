@@ -167,7 +167,7 @@ function obs(){
 	obsY -= height*obsChange/800;
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
 			hurt = true;
-			if(obsChange>1){
+			if(obsChange>2){
  		        	obsChange-=1;
 			}
  			if(lives < 1){
@@ -180,7 +180,7 @@ function obs(){
 		}
 	if (obsX>width){
 			score += 1;
-			obsChange = Math.sqrt(score+2);
+			obsChange = Math.sqrt(score+1)+1;
 			randobs=1
 	}
 	
