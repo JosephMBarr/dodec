@@ -23,6 +23,7 @@ var pts = 'pts';
 var mobile = false;
 var hurt = false;
 var hurtCounter = 0;
+var textMargin = height/8;
 $.mobile.loadingMessage = false;
 if(typeof window.orientation !== 'undefined'){
 	mobile = true;
@@ -79,9 +80,9 @@ function text(){
 	if(score == 1){
 		pts = 'pt'
 	}
-	ct.fillText(score+" "+pts,100,100);
-	ct.fillText(lives+" lives",300,100);
-	ct.fillText("High score: "+hiscore,500,100);
+	ct.fillText(score+" "+pts,100,textMargin);
+	ct.fillText(lives+" lives",300,textMargin);
+	ct.fillText("High score: "+hiscore,500,textMargin);
 }
 function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
