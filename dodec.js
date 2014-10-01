@@ -121,7 +121,7 @@ function drawDodec(){
 	ct.lineTo(11*scale+horizMargin,3*scale+move);
 	ct.closePath();
 	ct.fill();
-
+	ct.fillStyle="#E5E4E2";
 	move += change;
 	if(move >= hillY && searching == false){
 		change = 0;
