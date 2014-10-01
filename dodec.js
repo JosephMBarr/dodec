@@ -1,6 +1,6 @@
 var height = window.innerHeight;
 var width = window.innerWidth;
-var scale = 25;
+var scale = height/40;
 var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
@@ -104,7 +104,7 @@ function drawDodec(){
 		ct.fillStyle="#FF0000";
 		hurtCounter += 1;
 	}
-	if(hurtCounter > 45){
+	if(hurtCounter > 45 && hurt){
 		hurt = false;
 		hurtCounter = 0;
 	}
@@ -140,7 +140,7 @@ function dodec(){
 		obs();
 	}
 	drawDodec();
-	if(change == 0){
+	if(change == 0 && mobile){
 		$(document).on('vclick',function(){
 			change = -3;
 		});
@@ -171,6 +171,8 @@ function obs(){
  		        	obsChange-=1;
 			}
  			if(lives < 1){
+ 				hurt = false;
+ 				hurtCounter = 0;
  				ct.clearRect(-width,-height,width*2,height*2);
  				splash();
                         
@@ -189,7 +191,9 @@ function obs(){
 }
 
 function splash(){
-        score = 0;
+	hurt = false;
+	hurtCounter = 0;
+    score = 0;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
@@ -219,7 +223,9 @@ function splash(){
 	sct.rect(200+titleWidth,height/2-50,150,50);
 	sct.stroke();
 	document.addEventListener('click',clickHandler);
-	$(document).on('vclick',clickHandler);
+	if(mobile){
+		$(document).on('vclick',clickHandler);
+	}
 	lives = 3;
 
 }
