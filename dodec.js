@@ -129,7 +129,7 @@ function drawDodec(){
 	if(move >= hillY && searching == false){
 		change = 0;
 	}
-	if(hillY - move >= height/8){
+	if(hillY - move >= 100){
 		change = 3;
 	}
 }
