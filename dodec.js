@@ -12,7 +12,7 @@ var move = 3;
 var change = 2;
 var score = 0;
 var lives = 3;
-var obsChange = 1;
+var obsChange = 2;
 var randobs = 1;
 var searching = true;
 var justUnder;
