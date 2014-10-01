@@ -21,6 +21,8 @@ var hillY = 0;
 var obsable = false;
 var pts = 'pts';
 var mobile = false;
+var hurt = false;
+var hurtCounter = 0;
 if(typeof window.orientation !== 'undefined'){
 	mobile = true;
 }
@@ -95,7 +97,15 @@ function drawDodec(){
 	ct.moveTo(width, height/2)
 	ct.lineTo(0,height);
 	ct.stroke();
-	ct.fillStyle="#E5E4E2";
+	if(hurt === false){
+		ct.fillStyle="#E5E4E2";
+	}else{
+		ct.fillStyle="#FF0000";
+		hurtCounter += 1;
+	}
+	if(hurtCounter > 30){
+		hurt = false;
+	}
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+move);
 	ct.lineTo(11*scale+horizMargin,9*scale+move);
@@ -154,8 +164,9 @@ function obs(){
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
+			hurt = true;
 			if(obsChange>1){
- 		        obsChange-=1;
+ 		        	obsChange-=1;
 			}
  			if(lives < 1){
  				ct.clearRect(-width,-height,width*2,height*2);
