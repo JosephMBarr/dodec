@@ -30,6 +30,7 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
+$.mobile.loadingMessage = false;
 hill();
 splash();
 $.mobile.loadingMessage = false;
