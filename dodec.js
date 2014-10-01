@@ -180,7 +180,7 @@ function obs(){
 		}
 	if (obsX>width){
 			score += 1;
-			obsChange = Math.sqrt(score+1);
+			obsChange = Math.sqrt(score+2);
 			randobs=1
 	}
 	
