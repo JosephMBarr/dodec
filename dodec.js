@@ -132,7 +132,7 @@ function dodec(){
 	if(mobile){
 		$(document).on('vclick',function(event){
 			change = -3;
-		}
+		});
 	}
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
