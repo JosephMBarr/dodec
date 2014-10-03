@@ -195,7 +195,7 @@ function splash(){
 	hurt = false;
 	hurtCounter = 0;
     	score = 0;
-    	obsChange = 0;
+    	obsChange = 2;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
