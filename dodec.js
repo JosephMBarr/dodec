@@ -183,7 +183,7 @@ function obs(){
 		}
 	if (obsX>width){
 			score += 1;
-			if(obsChange<6){
+			if(obsChange<5){
 			obsChange = Math.sqrt(score+1)+1;
 			}
 			randobs=1
