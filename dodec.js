@@ -58,7 +58,6 @@ function animate(){
         }
 	text();
 	if(lives != 0){
-		requestAnimationFrame(animate);
 		if(score > hiscore){
 			localStorage.setItem('hiscore',score);
 		}
@@ -66,6 +65,7 @@ function animate(){
 		ct.clearRect(-width,-height,width*2,height*2);
 		splash();
 	}
+	requestAnimationFrame(animate);
 }
 var hiscore = localStorage.getItem('hiscore');
 
