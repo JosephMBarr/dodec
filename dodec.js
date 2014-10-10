@@ -88,6 +88,7 @@ function text(){
 	}
 	ct.fillText(score+" "+pts,100,textMargin);
 	ct.fillText(lives+" lives",300,textMargin);
+	hiscore = localStorage.getItem('hiscore');
 	ct.fillText("High score: "+hiscore,500,textMargin);
 }
 function getLow(){
