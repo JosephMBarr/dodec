@@ -24,6 +24,11 @@ var mobile = false;
 var hurt = false;
 var hurtCounter = 0;
 var textMargin = height/8;
+var inc = 0;
+var started = false;
+var incinc = .2;
+//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
+var gravity = .07;
 $.mobile.loadingMessage = false;
 if(typeof window.orientation !== 'undefined'){
 	mobile = true;
@@ -125,12 +130,19 @@ function drawDodec(){
 	ct.closePath();
 	ct.fill();
 	ct.fillStyle="#E5E4E2";
-	move += change;
+	move += change - inc;
+	if(started){
+		inc += incinc;
+	}
 	if(move >= hillY && searching == false){
 		change = 0;
+		inc = 0;
+		incinc = -incinc;
+		started = true;
 	}
 	if(hillY - move >= 100){
-		change = 3;
+		change = change;
+		incinc = -incinc;
 	}
 }
 function dodec(){
@@ -150,6 +162,7 @@ function dodec(){
 		var thekey=event.keyCode;
 		if((thekey == 38 ||thekey == 32) && change == 0){
 			change = -3;
+			incinc = -gravity;
 		}
 	});
 }
