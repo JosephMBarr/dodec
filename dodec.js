@@ -1,19 +1,18 @@
 var height = window.innerHeight;
 var width = window.innerWidth;
-var scale = height/40;
+var scale = width/72;
 var obsHeight = scale;
 var obsWidth = scale;
 var obsX = 5;
 var obsY = height;
 var horizMargin = (width)-(12*scale-5); 
-var a = (12*scale);
 var vertMargin = 0;
 var move = 3;
 var change = 2;
 var score = 0;
 var lives = 3;
 var obsChange = 2;
-var randobs = 1;
+var randobs = true;
 var searching = true;
 var justUnder;
 var red;
@@ -37,6 +36,9 @@ window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequest
 window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 
 $(document).ready(function(){
+$(window).resize(function(){
+    location.reload();
+});
 hill();
 splash();
 //obstacle/boulder canvas
@@ -53,23 +55,26 @@ function animate(){
 		getLow();
 	}
 	dodec();
-        if(localStorage.getItem('hiscore') == null){
-                localStorage.setItem('hiscore',0);
-        }
 	text();
+    if(obsable){
+		obs();
+	}
 	if(lives != 0){
-		if(score > hiscore){
-			localStorage.setItem('hiscore',score);
-		}
 		requestAnimationFrame(animate);
 	}else{
-		ct.clearRect(-width,-height,width*2,height*2);
+		ct.clearRect(0,0,width,height);
 		splash();
 	}
 	
 }
 var hiscore = localStorage.getItem('hiscore');
-
+function hiscoreHandler(s){
+    if(s > hiscore){
+        localStorage.setItem('hiscore',s);
+    }else if(localStorage.getItem('hiscore') == null){
+        localStorage.setItem('hiscore',0);
+    }
+}
 
 //draw hill down which boulder will roll as well as background
 function hill(){
@@ -143,7 +148,6 @@ function drawDodec(){
 		started = true;
 	}
 	if(hillY - move >= 100){
-		change = change;
 		incinc = -incinc;
 	}
 }
@@ -151,13 +155,11 @@ function dodec(){
 	var decSquare = 12*scale;
 	var degrees = 2;
 	ct.clearRect(0,0,width,height);
-	if(obsable){
-		obs();
-	}
 	drawDodec();
 	if(change == 0 && mobile){
 		$(document).on('vclick',function(){
 			change = -3;
+            incinc = -gravity;
 		});
 	}
 	document.addEventListener('keydown',function(event){
@@ -170,8 +172,8 @@ function dodec(){
 }
 function obs(){
     ct.strokeStyle="#E5E4E2";
-    	if(randobs==1){
-    		randobs = 0
+    	if(randobs==true){
+    		randobs = false;
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 25) + 25);
     		obsX = 0;
@@ -189,19 +191,20 @@ function obs(){
  			if(lives < 1){
  				hurt = false;
  				hurtCounter = 0;
- 				ct.clearRect(-width,-height,width*2,height*2);
+ 				ct.clearRect(0,0,width,height);
  				splash();
                         
  			}
  			lives -= 1;
-			randobs=1;
+			randobs=true;
 		}
 	if (obsX>width){
-			score += 1;
-			if(obsChange<5){
-			obsChange = Math.sqrt(score+1)+1;
-			}
-			randobs=1
+        score += 1;
+        hiscoreHandler(score);
+        if(obsChange<5){
+            obsChange = Math.floor(Math.sqrt(score+1))+1;
+        }
+        randobs=true;
 	}
 	
 }
@@ -209,16 +212,17 @@ function obs(){
 function splash(){
 	hurt = false;
 	hurtCounter = 0;
-    	score = 0;
-    	obsChange = 2;
+    score = 0;
+    obsChange = 2;
+    var titleFont = width/20;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
 	var sct = splashCanvas.getContext("2d");
-	sct.font="70px Courier";
+	sct.font=titleFont+"px Courier";
 	sct.fillStyle='#E5E4E2';
 	sct.strokeStyle='#E5E4E2';
-	sct.lineWidth=5;
+	sct.lineWidth=width/200;
 	function clickHandler(event){
 		clickX = event.clientX;
 		clickY = event.clientY;
@@ -231,13 +235,17 @@ function splash(){
 	var clickX;
 	var clickY;
 	var title = "dodec";
-	var play = "play"
+	var play = "play";
+    	var playFont = width/72;
 	var titleWidth = sct.measureText(title).width;
-	sct.fillText(title,100,height/2);
-	sct.font="20px Courier";
+	sct.fillText(title,width/14,height/2);
+	sct.font=playFont+"px Courier";
 	var playWidth = sct.measureText(play).width;
-	sct.fillText(play,100+titleWidth+100+75-playWidth/2,height/2-20);
-	sct.rect(200+titleWidth,height/2-50,150,50);
+    	var boxWidth = width/10;
+    	var boxHeight = boxWidth/3.5;
+	var boxY = height/2-boxHeight;
+	sct.fillText(play,(width/14)*2+titleWidth,boxY+playFont*1.3);
+	sct.rect((width/14)*2+titleWidth-playWidth,boxY,boxWidth,boxHeight);
 	sct.stroke();
 	document.addEventListener('click',clickHandler);
 	if(mobile){
