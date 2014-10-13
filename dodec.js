@@ -211,6 +211,10 @@ function obs(){
 		}
 	if (obsX>width){
         score += 1;
+        //Every 15 pts, an extra life
+        if(score % 15 == 0){
+        	lives +=1
+        }
         hiscoreHandler(score);
         obsChange = Math.floor(Math.sqrt(score+1))+1;
         randobs=true;
