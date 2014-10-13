@@ -104,7 +104,6 @@ function getLow(){
 	if(red > 100){
 		searching = false;
         hillY = move;
-        obsable = true;
 	}
 }
 function drawDodec(){
@@ -124,10 +123,11 @@ function drawDodec(){
 		hurtCounter = 0;
 	}
 	if(obsCounter<obsWait){
-		obsCounter +=1
+		obsCounter +=1;
 	}else{
-		obsCounter = 0
-		obsWait = 0
+		obsCounter = 0;
+		obsWait = 0;
+		obsable = true;
 	}
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+move);
@@ -196,6 +196,7 @@ function obs(){
 	}
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
 			hurt = true;
+			obsable = false;
 			if(obsChange>2){
  		        	obsChange-=1;
 			}
@@ -210,14 +211,15 @@ function obs(){
 			randobs=true;
 		}
 	if (obsX>width){
-        score += 1;
+        	score += 1;
+        	obsable = false;
         //Every 15 pts, an extra life
-        if(score % 15 == 0){
-        	lives +=1
-        }
-        hiscoreHandler(score);
-        obsChange = Math.floor(Math.sqrt(score+1))+1;
-        randobs=true;
+	        if(score % 15 == 0){
+	        	lives +=1
+	        }
+	        hiscoreHandler(score);
+	        obsChange = Math.floor(Math.sqrt(score+1))+1;
+	        randobs=true;
 	}
 	
 }
