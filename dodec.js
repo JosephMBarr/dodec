@@ -53,12 +53,12 @@ ct.fillStyle='#E5E4E2';
 
 
 function animate(){
-	if(obs){
+	if(searching){
 		getLow();
 	}
 	dodec();
 	text();
-    if(obsable && !obs){
+    if(obsable && !searching){
 		obs();
 	}
 	if(lives != 0){
@@ -102,7 +102,7 @@ function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
 	red = justUnder.data[0];
 	if(red > 100){
-		obs = false;
+		searching = false;
         hillY = move;
 	}
 }
