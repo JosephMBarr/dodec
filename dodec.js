@@ -188,12 +188,14 @@ function obs(){
     		obsX = 0;
 		obsY = height-obsHeight;
     	}
-	ct.fillRect(obsX,obsY,obsWidth,obsHeight);
-	ct.stroke();
+	
 	if(obsCounter>=obsWait){
-	obsX += width*obsChange/400;
-	obsY -= height*obsChange/800;
+		obsX += width*obsChange/400;
+		obsY -= height*obsChange/800;
+		ct.fillRect(obsX,obsY,obsWidth,obsHeight);
+		ct.stroke();
 	}
+	
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
 			hurt = true;
 			obsable = false;
