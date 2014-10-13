@@ -190,10 +190,10 @@ function obs(){
     	}
 	
 	if(obsCounter>=obsWait){
-		obsX += width*obsChange/400;
-		obsY -= height*obsChange/800;
 		ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 		ct.stroke();
+		obsX += width*obsChange/400;
+		obsY -= height*obsChange/800;
 	}
 	
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
