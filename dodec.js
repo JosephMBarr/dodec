@@ -22,6 +22,8 @@ var pts = 'pts';
 var mobile = false;
 var hurt = false;
 var hurtCounter = 0;
+var obsWait = 0;
+var obsCounter = 0;
 var textMargin = height/8;
 var inc = 0;
 var started = false;
@@ -121,6 +123,12 @@ function drawDodec(){
 		hurt = false;
 		hurtCounter = 0;
 	}
+	if(obsCounter<obsWait){
+		obsCounter +=1
+	}else{
+		obsCounter = 0
+		obsWait = 0
+	}
 	ct.beginPath();
 	ct.moveTo(12*scale+horizMargin,6*scale+move);
 	ct.lineTo(11*scale+horizMargin,9*scale+move);
@@ -176,13 +184,16 @@ function obs(){
     		randobs = false;
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 25) + 25);
+    		obsWait = Math.floor(Math.random() * 100)
     		obsX = 0;
 		obsY = height-(obsHeight);
     	}
 	ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 	ct.stroke();
+	if(obsCounter>=obsWait){
 	obsX += width*obsChange/400;
 	obsY -= height*obsChange/800;
+	}
 	if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
 			hurt = true;
 			if(obsChange>2){
