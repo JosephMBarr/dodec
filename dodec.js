@@ -186,7 +186,7 @@ function obs(){
     		obsHeight = Math.floor((Math.random() * 25) + 25);
     		obsWait = Math.floor(Math.random() * 100)
     		obsX = 0-(obsWidth);
-		obsY = (height-obsHeight)+(obsWidth/2);
+		obsY = (height-obsHeight)+(obsWidth*2);
     	}
 	ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 	ct.stroke();
@@ -212,9 +212,7 @@ function obs(){
 	if (obsX>width){
         score += 1;
         hiscoreHandler(score);
-        if(obsChange<5){
-            obsChange = Math.floor(Math.sqrt(score+1))+1;
-        }
+        obsChange = Math.floor(Math.sqrt(score+1))+1;
         randobs=true;
 	}
 	
