@@ -116,7 +116,7 @@ function reset(event){
             type:"warning",
             showCancelButton:true,
             confirmButtonColor:blue,
-            confirmButton:"Reset High Score",
+            confirmButtonText:"Reset High Score",
             closeOnConfirm:false
         },
             function(){
