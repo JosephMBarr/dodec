@@ -3,7 +3,7 @@ var width = window.innerWidth;
 var scale = width/72;
 var obsHeight = scale;
 var obsWidth = scale;
-var obsX = 5;
+var obsX = 0;
 var obsY = height;
 var horizMargin = (width)-(12*scale-5); 
 var vertMargin = 0;
@@ -28,6 +28,9 @@ var textMargin = height/8;
 var inc = 0;
 var started = false;
 var incinc = .2;
+var white = '#E5E4E2';
+var blue = '#151B54';
+var resetWidth;
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 var gravity = .07;
 $.mobile.loadingMessage = false;
@@ -48,7 +51,7 @@ var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
-ct.font="40px Courier";
+
 ct.fillStyle='#E5E4E2';
 
 
@@ -93,10 +96,42 @@ function text(){
 	if(score == 1){
 		pts = 'pt'
 	}
+    ct.font="40px Courier";
 	ct.fillText(score+" "+pts,100,textMargin);
 	ct.fillText(lives+" lives",300,textMargin);
 	hiscore = localStorage.getItem('hiscore');
 	ct.fillText("High score: "+hiscore,500,textMargin);
+    ct.font='20px Courier';
+    $(document).on('vclick',reset);
+    ct.fillText("Reset?", 900,textMargin);
+    resetWidth = ct.measureText("Reset?").width;
+}
+function reset(event){
+    var x = event.clientX;
+    var y = event.clientY;
+    if(x >= 900 && x <= resetWidth+900 && y >= textMargin-20 && y <= textMargin+20){
+        swal({
+            title:"Do you really want to reset your high score?",
+            text:"This action cannot be undone.",
+            type:"warning",
+            showCancelButton:true,
+            confirmButtonColor:blue,
+            confirmButton:"Reset High Score",
+            closeOnConfirm:false
+        },
+            function(){
+                localStorage.setItem('hiscore',0);
+                swal("Success","Your high score has been reset","success");
+                restart();
+        });
+    }
+}
+function restart(){
+    hurt = false;
+    hurtCounter = 0;
+    lives = 0;
+    ct.clearRect(0,0,width,height);
+
 }
 function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
@@ -203,10 +238,7 @@ function obs(){
  		        	obsChange-=1;
 			}
  			if(lives < 1){
- 				hurt = false;
- 				hurtCounter = 0;
- 				ct.clearRect(0,0,width,height);
- 				splash();
+                restart();
                         
  			}
  			lives -= 1;
@@ -231,6 +263,8 @@ function splash(){
 	hurtCounter = 0;
     score = 0;
     obsChange = 2;
+    obsY = height - obsHeight;
+    obsX = 0;
     var titleFont = width/20;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
@@ -253,13 +287,13 @@ function splash(){
 	var clickY;
 	var title = "dodec";
 	var play = "play";
-    	var playFont = width/72;
+    var playFont = width/72;
 	var titleWidth = sct.measureText(title).width;
 	sct.fillText(title,width/14,height/2);
 	sct.font=playFont+"px Courier";
 	var playWidth = sct.measureText(play).width;
-    	var boxWidth = width/10;
-    	var boxHeight = boxWidth/3.5;
+    var boxWidth = width/10;
+    var boxHeight = boxWidth/3.5;
 	var boxY = height/2-boxHeight;
 	sct.fillText(play,(width/14)*2+titleWidth,boxY+playFont*1.3);
 	sct.rect((width/14)*2+titleWidth-playWidth,boxY,boxWidth,boxHeight);
