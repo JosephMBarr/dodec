@@ -1,4 +1,6 @@
-
+*{
+    font-family:'Courier';
+}
 #can2{
   	position:absolute;
   	margin:auto;
@@ -22,4 +24,21 @@
 	left:0;
 	right:0;
 	position:absolute;
+}
+#leaderboard{
+    font-size:20px;
+    position:absolute;
+    color:white;
+    margin-top:70px;
+    z-index:999999;
+}
+#text{
+    font-size:30px;
+    position:absolute;
+    color:white;
+    z-index:999999;
+}
+.dummy{
+    margin-left:80%;
+    margin-top:20%;
 }
