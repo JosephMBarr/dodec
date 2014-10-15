@@ -34,6 +34,7 @@ var resetWidth;
 var swag = 'swag';
 var aUrl = 'https://dl.dropboxusercontent.com/u/97541109/swag.txt';
 var leaderboard=[];
+var livesText;
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 var gravity = .07;
 $.mobile.loadingMessage = false;
@@ -100,12 +101,16 @@ function hill(){
 }
 function text(){
 	pts = 'pts';
+	livesText = "lives";
+	if(lives == 1){
+		livesText = 'life';
+	}
 	if(score == 1){
 		pts = 'pt'
 	}
     ct.font="40px Courier";
 	ct.fillText(score+" "+pts,100,textMargin);
-	ct.fillText(lives+" lives",300,textMargin);
+	ct.fillText(lives+" "+livesText+,300,textMargin);
 	hiscore = localStorage.getItem('hiscore');
 	ct.fillText("High score: "+hiscore,500,textMargin);
     ct.font='20px Courier';
