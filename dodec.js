@@ -110,7 +110,7 @@ function text(){
 	}
     ct.font="40px Courier";
 	ct.fillText(score+" "+pts,100,textMargin);
-	ct.fillText(lives+" "+livesText+,300,textMargin);
+	ct.fillText(lives+" "+livesText,300,textMargin);
 	hiscore = localStorage.getItem('hiscore');
 	ct.fillText("High score: "+hiscore,500,textMargin);
     ct.font='20px Courier';
