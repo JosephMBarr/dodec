@@ -75,6 +75,7 @@ function animate(){
         }
 		ct.clearRect(0,0,width,height);
 		splash();
+		document.getElementById('dummy').style.visibility = 'visible';
 	}
 	
 }
@@ -285,6 +286,7 @@ function splash(){
 		clickY = event.clientY;
 		if(sct.isPointInPath(clickX,clickY)){
 			sct.clearRect(0,0,width,height);
+			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
 			animate();
         	}
