@@ -32,7 +32,7 @@ var white = '#E5E4E2';
 var blue = '#151B54';
 var resetWidth;
 var swag = 'swag';
-var aUrl = 'https://dl.dropboxusercontent.com/u/97541109/swag.txt';
+var aUrl = 'leaderboards.txt';
 var leaderboard=[];
 var livesText;
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
