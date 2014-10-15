@@ -31,6 +31,9 @@ var incinc = .2;
 var white = '#E5E4E2';
 var blue = '#151B54';
 var resetWidth;
+var swag = 'swag';
+var aUrl = 'https://dl.dropboxusercontent.com/u/97541109/swag.txt';
+var leaderboard=[];
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 var gravity = .07;
 $.mobile.loadingMessage = false;
@@ -67,6 +70,9 @@ function animate(){
 	if(lives != 0){
 		requestAnimationFrame(animate);
 	}else{
+        if(score > leaderboard[4]){
+            onTheList(score);
+        }
 		ct.clearRect(0,0,width,height);
 		splash();
 	}
@@ -305,4 +311,49 @@ function splash(){
 	lives = 3;
 
 }
+function httpGet(theUrl){
+    var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET",theUrl,false);
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+function readList(lst){
+    var lines = lst.split('\n');
+    return lines;
+}
+function writeList(arr){
+    for(var i = 0;i<5;i++){
+        if(arr[i] == undefined){
+            arr[i] = 0;   
+        }
+        leaderboard.push(arr[i]);
+        document.getElementById('score'+(i+1)).innerHTML = arr[i];
+    }
+}
+function onTheList(newScore){
+    $.ajax({
+        type:"POST",
+        url: "https://mandrillapp.com/api/1.0/messages/send.json",
+        data: {
+            'key':'dqZonEvVVPUI3IYSnJkK-Q',
+            'message':{
+                'from_email':'stheery@gmail.com',
+                'to':[
+                    {
+                        'email':'dodecgame@gmail.com',
+                        'type':'to'
+                    }
+                ],
+            'autotext':'true',
+                'subject':'New High Score!',
+                'html':''+newScore
+            }
+        }
+    }).done(function(response){
+        console.log(response);
+    });
+}
+writeList(readList(httpGet(aUrl)));
+
 });
