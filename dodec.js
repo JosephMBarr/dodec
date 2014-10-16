@@ -67,7 +67,7 @@ function animate(){
     if(obsable && !searching){
 		obs();
 	}
-	if(lives !== 0){
+	if(lives > 0){
 		requestAnimationFrame(animate);
 	}else{
 		cancelAnimationFrame(animate);
