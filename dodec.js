@@ -146,7 +146,7 @@ function reset(event){
             function(){
                 localStorage.setItem('hiscore',0);
                 swal("Success","Your high score has been reset","success");
-                restart();
+                splash
         });
     }
 }
@@ -263,7 +263,7 @@ function obs(){
  		        	obsChange-=1;
 			}
  			if(lives < 1){
-                restart();
+                		splash
                         
  			}
  			lives -= 1;
