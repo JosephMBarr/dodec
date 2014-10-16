@@ -85,9 +85,10 @@ function animate(){
 			function(newGame){
 				if(newGame){
 					splash();
+					document.getElementById('dummy').style.visibility = 'visible';
 				}
 			});
-		document.getElementById('dummy').style.visibility = 'visible';
+		
 	}
 	
 }
@@ -145,7 +146,7 @@ function reset(event){
             function(){
                 localStorage.setItem('hiscore',0);
                 swal("Success","Your high score has been reset","success");
-                splash
+                splash();
         });
     }
 }
