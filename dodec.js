@@ -27,16 +27,15 @@ var obsCounter = 0;
 var textMargin = height/8;
 var inc = 0;
 var started = false;
-var incinc = .2;
+var incinc = 0.2;
 var white = '#E5E4E2';
 var blue = '#151B54';
 var resetWidth;
-var swag = 'swag';
 var aUrl = 'leaderboards.txt';
 var leaderboard=[];
 var livesText;
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
-var gravity = .07;
+var gravity = 0.07;
 $.mobile.loadingMessage = false;
 if(typeof window.orientation !== 'undefined'){
 	mobile = true;
@@ -68,13 +67,27 @@ function animate(){
     if(obsable && !searching){
 		obs();
 	}
-	if(lives != 0){
+	if(lives !== 0){
 		requestAnimationFrame(animate);
 	}else{
         if(score > leaderboard[4]){
             onTheList(score);
         }
 		ct.clearRect(0,0,width,height);
+		swal({
+			title:"You Lose!",
+			text:"Score: "+score+"\\n"+"Your High Score: "+hiscore+"\\n"+"Score to Beat: "+leaderboard[0],
+			type:"error",
+			confirmButtonText:"New Game",
+			confirmButtonColor:blue
+		
+		},
+			function(newGame){
+				if(newGame){
+					splash();
+				}
+			} 
+		)
 		splash();
 		document.getElementById('dummy').style.visibility = 'visible';
 	}
@@ -84,7 +97,7 @@ var hiscore = localStorage.getItem('hiscore');
 function hiscoreHandler(s){
     if(s > hiscore){
         localStorage.setItem('hiscore',s);
-    }else if(localStorage.getItem('hiscore') == null){
+    }else if(localStorage.getItem('hiscore') === null){
         localStorage.setItem('hiscore',0);
     }
 }
@@ -106,17 +119,17 @@ function text(){
 		livesText = 'life';
 	}
 	if(score == 1){
-		pts = 'pt'
+		pts = 'pt';
 	}
-    ct.font="40px Courier";
+    	ct.font="40px Courier";
 	ct.fillText(score+" "+pts,100,textMargin);
 	ct.fillText(lives+" "+livesText,300,textMargin);
 	hiscore = localStorage.getItem('hiscore');
 	ct.fillText("High score: "+hiscore,500,textMargin);
-    ct.font='20px Courier';
-    $(document).on('vclick',reset);
-    ct.fillText("Reset?", 900,textMargin);
-    resetWidth = ct.measureText("Reset?").width;
+    	ct.font='20px Courier';
+    	$(document).on('vclick',reset);
+    	ct.fillText("Reset?", 900,textMargin);
+    	resetWidth = ct.measureText("Reset?").width;
 }
 function reset(event){
     var x = event.clientX;
@@ -156,7 +169,7 @@ function getLow(){
 function drawDodec(){
 	ct.strokeStyle = "#E5E4E2";
 	ct.beginPath();
-	ct.moveTo(width, height/2)
+	ct.moveTo(width, height/2);
 	ct.lineTo(0,height);
 	ct.stroke();
 	if(hurt === false){
@@ -196,7 +209,7 @@ function drawDodec(){
 	if(started){
 		inc += incinc;
 	}
-	if(move >= hillY && searching == false){
+	if(move >= hillY && searching === false){
 		change = 0;
 		inc = 0;
 		incinc = -incinc;
@@ -207,11 +220,9 @@ function drawDodec(){
 	}
 }
 function dodec(){
-	var decSquare = 12*scale;
-	var degrees = 2;
 	ct.clearRect(0,0,width,height);
 	drawDodec();
-	if(change == 0 && mobile){
+	if(change === 0 && mobile){
 		$(document).on('vclick',function(){
 			change = -3;
             incinc = -gravity;
@@ -219,7 +230,7 @@ function dodec(){
 	}
 	document.addEventListener('keydown',function(event){
 		var thekey=event.keyCode;
-		if((thekey == 38 ||thekey == 32) && change == 0){
+		if((thekey == 38 ||thekey == 32) && change === 0){
 			change = -3;
 			incinc = -gravity;
 		}
@@ -227,11 +238,11 @@ function dodec(){
 }
 function obs(){
     ct.strokeStyle="#E5E4E2";
-    	if(randobs==true){
+    	if(randobs===true){
     		randobs = false;
     		obsWidth = Math.floor((Math.random() * 40) + 25);
     		obsHeight = Math.floor((Math.random() * 25) + 25);
-    		obsWait = Math.floor(Math.random() * 100)
+    		obsWait = Math.floor(Math.random() * 100);
     		obsX = 0;
 		obsY = height-obsHeight;
     	}
@@ -260,8 +271,8 @@ function obs(){
         	score += 1;
         	obsable = false;
         //Every 15 pts, an extra life
-	        if(score % 15 == 0){
-	        	lives +=1
+	        if(score % 15 === 0){
+	        	lives +=1;
 	        }
 	        hiscoreHandler(score);
 	        obsChange = Math.floor(Math.sqrt(score+1))+1;
@@ -269,15 +280,19 @@ function obs(){
 	}
 	
 }
-
-function splash(){
+//reset variables in order for new game
+function newGame(){
 	hurt = false;
 	hurtCounter = 0;
-    score = 0;
-    obsChange = 2;
-    obsY = height - obsHeight;
-    obsX = 0;
-    var titleFont = width/20;
+   	score = 0;
+    	obsChange = 2;
+    	obsY = height - obsHeight;
+    	obsX = 0;
+}
+
+function splash(){
+	newGame();
+    	var titleFont = width/20;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
@@ -300,13 +315,13 @@ function splash(){
 	var clickY;
 	var title = "dodec";
 	var play = "play";
-    var playFont = width/72;
+    	var playFont = width/72;
 	var titleWidth = sct.measureText(title).width;
 	sct.fillText(title,width/14,height/2);
 	sct.font=playFont+"px Courier";
 	var playWidth = sct.measureText(play).width;
-    var boxWidth = width/10;
-    var boxHeight = boxWidth/3.5;
+    	var boxWidth = width/10;
+    	var boxHeight = boxWidth/3.5;
 	var boxY = height/2-boxHeight;
 	sct.fillText(play,(width/14)*2+titleWidth,boxY+playFont*1.3);
 	sct.rect((width/14)*2+titleWidth-playWidth,boxY,boxWidth,boxHeight);
@@ -319,8 +334,7 @@ function splash(){
 
 }
 function httpGet(theUrl){
-    var xmlHttp = null;
-    xmlHttp = new XMLHttpRequest();
+    var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET",theUrl,false);
     xmlHttp.send(null);
     return xmlHttp.responseText;
@@ -331,7 +345,7 @@ function readList(lst){
 }
 function writeList(arr){
     for(var i = 0;i<5;i++){
-        if(arr[i] == undefined){
+        if(arr[i] === undefined){
             arr[i] = 0;   
         }
         leaderboard.push(arr[i]);
