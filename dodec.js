@@ -70,6 +70,7 @@ function animate(){
 	if(lives !== 0){
 		requestAnimationFrame(animate);
 	}else{
+		cancelAnimationFrame(animate);
         if(score > leaderboard[4]){
             onTheList(score);
         }
@@ -302,7 +303,6 @@ function splash(){
 			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
 			lives = 3;
-			cancelAnimationFrame(animate);
 			animate();
         	}
 	}
