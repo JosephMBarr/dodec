@@ -154,10 +154,13 @@ function reset(event){
 function restart(){
     hurt = false;
     hurtCounter = 0;
+    score = 0;
+    obsChange = 2;
+    obsY = height - obsHeight;
+    obsX = 0;
     lives = 0;
-    inc = 0;
-    incinc = 0.2;
     ct.clearRect(0,0,width,height);
+    
 
 }
 function getLow(){
@@ -283,17 +286,8 @@ function obs(){
 	
 }
 //reset variables in order for new game
-function newGame(){
-	hurt = false;
-	hurtCounter = 0;
-   	score = 0;
-    	obsChange = 2;
-    	obsY = height - obsHeight;
-    	obsX = 0;
-}
-
 function splash(){
-	newGame();
+	restart();
     	var titleFont = width/20;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
