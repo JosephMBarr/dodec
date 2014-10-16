@@ -263,7 +263,7 @@ function obs(){
  		        	obsChange-=1;
 			}
  			if(lives < 1){
-                		splash
+                		splash();
                         
  			}
  			lives -= 1;
@@ -301,6 +301,7 @@ function splash(){
 			sct.clearRect(0,0,width,height);
 			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
+			lives = 3;
 			animate();
         	}
 	}
@@ -323,7 +324,6 @@ function splash(){
 	if(mobile){
 		$(document).on('vclick',clickHandler);
 	}
-	lives = 3;
 
 }
 function httpGet(theUrl){
