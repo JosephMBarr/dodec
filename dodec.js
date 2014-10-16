@@ -33,6 +33,7 @@ var blue = '#151B54';
 var resetWidth;
 var aUrl = 'leaderboards.txt';
 var leaderboard=[];
+var titleFont = width/20;
 var livesText;
 //higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 var gravity = 0.07;
@@ -285,7 +286,6 @@ function obs(){
 //reset variables in order for new game
 function splash(){
 	restart();
-    	var titleFont = width/20;
 	var splashCanvas=document.getElementById("splash");
 	splashCanvas.setAttribute("height",height);
 	splashCanvas.setAttribute("width",width);
@@ -302,7 +302,7 @@ function splash(){
 			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
 			lives = 3;
-			animate();
+			requestAnimationFrame(animate);
         	}
 	}
 	var clickX;
