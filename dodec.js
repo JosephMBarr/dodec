@@ -76,7 +76,7 @@ function animate(){
 		ct.clearRect(0,0,width,height);
 		swal({
 			title:"You Lose!",
-			text:"Score: "+score+"\\n"+"Your High Score: "+hiscore+"\\n"+"Score to Beat: "+leaderboard[0],
+			text:"Score: "+score+" Your High Score: "+hiscore+" Score to Beat: "+leaderboard[0],
 			type:"error",
 			confirmButtonText:"New Game",
 			confirmButtonColor:blue
@@ -155,6 +155,8 @@ function restart(){
     hurt = false;
     hurtCounter = 0;
     lives = 0;
+    inc = 0;
+    incinc = 0.2;
     ct.clearRect(0,0,width,height);
 
 }
