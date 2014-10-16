@@ -302,7 +302,8 @@ function splash(){
 			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
 			lives = 3;
-			requestAnimationFrame(animate);
+			cancelAnimationFrame(animate);
+			animate();
         	}
 	}
 	var clickX;
