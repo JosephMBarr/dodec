@@ -70,10 +70,9 @@ function animate(){
 	if(lives > 0){
 		requestAnimationFrame(animate);
 	}else{
-		cancelAnimationFrame(animate);
-        if(score > leaderboard[4]){
-            onTheList(score);
-        }
+        	if(score > leaderboard[4]){
+            		onTheList(score);
+        	}
 		ct.clearRect(0,0,width,height);
 		swal({
 			title:"You Lose!",
@@ -87,9 +86,7 @@ function animate(){
 				if(newGame){
 					splash();
 				}
-			} 
-		)
-		splash();
+			});
 		document.getElementById('dummy').style.visibility = 'visible';
 	}
 	
@@ -303,7 +300,6 @@ function splash(){
 			document.getElementById('dummy').style.visibility="hidden";
 			document.removeEventListener('click',clickHandler);
 			lives = 3;
-			animate();
         	}
 	}
 	var clickX;
