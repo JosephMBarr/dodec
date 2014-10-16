@@ -47,16 +47,15 @@ $(document).ready(function(){
 $(window).resize(function(){
     location.reload();
 });
-hill();
-splash();
+
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
-
 ct.fillStyle='#E5E4E2';
-
+hill();
+splash();
 
 function animate(){
 	if(searching){
@@ -160,8 +159,6 @@ function restart(){
     obsX = 0;
     lives = 0;
     ct.clearRect(0,0,width,height);
-    
-
 }
 function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
