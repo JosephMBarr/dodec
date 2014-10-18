@@ -55,6 +55,8 @@ c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
 ct.fillStyle='#E5E4E2';
+var c2=document.getElementById("can2");
+var ctx2=c2.getContext("2d");
 hill();
 splash();
 
@@ -103,8 +105,7 @@ function hiscoreHandler(s){
 
 //draw hill down which boulder will roll as well as background
 function hill(){
-	var c2=document.getElementById("can2");
-	var ctx2=c2.getContext("2d");
+
 	c2.setAttribute("height",height);
 	c2.setAttribute("width",width);
 	ctx2.fillStyle="#151B54";
