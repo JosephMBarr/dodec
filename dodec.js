@@ -120,15 +120,15 @@ function text(){
 	if(score == 1){
 		pts = 'pt';
 	}
-    	ct.font="40px Courier";
-	ct.fillText(score+" "+pts,100,textMargin);
-	ct.fillText(lives+" "+livesText,300,textMargin);
+    	ctx2.font="40px Courier";
+	ctx2.fillText(score+" "+pts,100,textMargin);
+	ctx2.fillText(lives+" "+livesText,300,textMargin);
 	hiscore = localStorage.getItem('hiscore');
-	ct.fillText("High score: "+hiscore,500,textMargin);
-    	ct.font='20px Courier';
+	ctx2.fillText("High score: "+hiscore,500,textMargin);
+    	ctx2.font='20px Courier';
     	$(document).on('vclick',reset);
-    	ct.fillText("Reset?", 900,textMargin);
-    	resetWidth = ct.measureText("Reset?").width;
+    	ctx2.fillText("Reset?", 900,textMargin);
+    	resetWidth = ctx2.measureText("Reset?").width;
 }
 function reset(event){
     var x = event.clientX;
