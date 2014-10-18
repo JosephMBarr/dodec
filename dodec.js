@@ -65,6 +65,7 @@ function animate(){
 		getLow();
 	}
 	dodec();
+	ctx2.clearRect(0,0,width,height);
 	text();
     if(obsable && !searching){
 		obs();
