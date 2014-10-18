@@ -161,6 +161,8 @@ function restart(){
     obsX = 0;
     lives = 0;
     ct.clearRect(0,0,width,height);
+    ctx2.clearRect(0,0,width,height);
+    hill();
 }
 function getLow(){
 	justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
