@@ -105,14 +105,13 @@ function hiscoreHandler(s){
 
 //draw hill down which boulder will roll as well as background
 function hill(){
-
 	c2.setAttribute("height",height);
 	c2.setAttribute("width",width);
-	ctx2.fillStyle="#151B54";
+	ctx2.fillStyle=blue;
 	ctx2.fillRect(0,0,width,height);
-
 }
 function text(){
+	ctx2.fillStyle=white;
 	pts = 'pts';
 	livesText = "lives";
 	if(lives == 1){
