@@ -54,7 +54,7 @@ var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
 c3.setAttribute("width",width);
 var ct=c3.getContext("2d");
-ct.fillStyle='#E5E4E2';
+ct.fillStyle=white;
 var c2=document.getElementById("can2");
 var ctx2=c2.getContext("2d");
 hill();
@@ -173,13 +173,13 @@ function getLow(){
 	}
 }
 function drawDodec(){
-	ct.strokeStyle = "#E5E4E2";
+	ct.strokeStyle = white;
 	ct.beginPath();
 	ct.moveTo(width, height/2);
 	ct.lineTo(0,height);
 	ct.stroke();
 	if(hurt === false){
-		ct.fillStyle="#E5E4E2";
+		ct.fillStyle=white;
 	}else{
 		ct.fillStyle="#FF0000";
 		hurtCounter += 1;
@@ -210,7 +210,7 @@ function drawDodec(){
 	ct.lineTo(11*scale+horizMargin,3*scale+move);
 	ct.closePath();
 	ct.fill();
-	ct.fillStyle="#E5E4E2";
+	ct.fillStyle=white;
 	move += change - inc;
 	if(started){
 		inc += incinc;
@@ -243,7 +243,7 @@ function dodec(){
 	});
 }
 function obs(){
-    ct.strokeStyle="#E5E4E2";
+    ct.strokeStyle=white;
     	if(randobs===true){
     		randobs = false;
     		obsWidth = Math.floor((Math.random() * 40) + 25);
@@ -294,8 +294,8 @@ function splash(){
 	splashCanvas.setAttribute("width",width);
 	var sct = splashCanvas.getContext("2d");
 	sct.font=titleFont+"px Courier";
-	sct.fillStyle='#E5E4E2';
-	sct.strokeStyle='#E5E4E2';
+	sct.fillStyle=white;
+	sct.strokeStyle=white;
 	sct.lineWidth=width/200;
 	function clickHandler(event){
 		clickX = event.clientX;
