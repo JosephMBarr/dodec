@@ -89,8 +89,7 @@ function animate(){
 			function(){
 				splash();
 				document.getElementById('dummy').style.visibility = 'visible';
-				}
-			});
+				});
 		
 	}
 	
