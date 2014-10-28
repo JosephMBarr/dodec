@@ -86,10 +86,9 @@ function animate(){
 			confirmButtonColor:blue
 		
 		},
-			function(newGame){
-				if(newGame){
-					splash();
-					document.getElementById('dummy').style.visibility = 'visible';
+			function(){
+				splash();
+				document.getElementById('dummy').style.visibility = 'visible';
 				}
 			});
 		
