@@ -32,6 +32,7 @@ var white = '#E5E4E2';
 var blue = '#151B54';
 var resetWidth;
 var aUrl = 'leaderboards.txt';
+
 var leaderboard=[];
 var titleFont = width/20;
 var livesText;
@@ -48,7 +49,7 @@ $(document).ready(function(){
 $(window).resize(function(){
     location.reload();
 });
-
+writeList(readList(httpGet(aUrl)));
 //obstacle/boulder canvas
 var c3=document.getElementById("can3");
 c3.setAttribute("height",height);
@@ -369,6 +370,6 @@ function onTheList(newScore){
         console.log(response);
     });
 }
-writeList(readList(httpGet(aUrl)));
+
 
 });
