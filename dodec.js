@@ -281,7 +281,7 @@
 		        	lives +=1;
 		        }
 		        hiscoreHandler(score);
-		        obsChange = Math.floor(Math.sqrt(score+1))+1;
+		          obsChange = Math.floor(Math.sqrt(score+1))+Math.floor(Math.random()*3);
 		        randobs=true;
 		}
 		
