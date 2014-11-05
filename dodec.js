@@ -58,7 +58,7 @@
 	c3.setAttribute("height",height);
 	c3.setAttribute("width",width);
 	var ct=c3.getContext("2d");
-	ct.fillStyle=white;
+	ct.fillStyle=green;
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
 	hill();
