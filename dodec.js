@@ -81,7 +81,7 @@
 		if(lives > 0){
 			requestAnimationFrame(animate);
 		}else{
-	        	if(score > leaderboard[4]){
+	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
 	        	}
 			ct.clearRect(0,0,width,height);
