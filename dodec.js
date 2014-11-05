@@ -274,7 +274,6 @@
 			else{
 				ct.fillStyle = "#E5E4E2"
 			}
-			if(power)
 			ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 			ct.stroke();
 			obsX += width*obsChange/400;
