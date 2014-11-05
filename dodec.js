@@ -250,7 +250,7 @@
 		});
 	}
 	function obs(){
-	    ct.strokeStyle=white;
+	    ct.strokeStyle= "#009933";
 	    	if(randobs===true){
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
