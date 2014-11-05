@@ -250,12 +250,7 @@
 		});
 	}
 	function obs(){
-		if(powerUp=false){
 	    ct.strokeStyle=white;
-		}
-		else{
-		ct.strokeStyle=green;
-		}
 	    	if(randobs===true){
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
