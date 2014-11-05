@@ -31,7 +31,6 @@
 	var incinc = 0.2;
 	var white = '#E5E4E2';
 	var blue = '#151B54';
-	var green = '#009933';
 	var resetWidth;
 	var aUrl = 'leaderboards.txt';
 	var already;
@@ -59,7 +58,8 @@
 	c3.setAttribute("height",height);
 	c3.setAttribute("width",width);
 	var ct=c3.getContext("2d");
-	ct.fillStyle= green;
+	ct.fillStyle= white;
+	ct.fillColor= green;
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
 	hill();
