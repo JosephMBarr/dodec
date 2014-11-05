@@ -253,7 +253,7 @@
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
 	    		obsHeight = Math.floor((Math.random() * 25) + 25);
-	    		obsWait = Math.floor(Math.random() * 100);
+	    		obsWait = Math.floor((Math.random() * 100)+ obsChange*2);
 	    		obsX = 0;
 			obsY = height-obsHeight;
 	    	}
@@ -286,7 +286,7 @@
 		        	lives +=1;
 		        }
 		        hiscoreHandler(score);
-		          obsChange = Math.floor(Math.sqrt(score+1))+Math.floor(Math.random()*3);
+		          obsChange = Math.floor(Math.sqrt(score+1))+Math.floor(Math.random()*2);
 		        randobs=true;
 		}
 
