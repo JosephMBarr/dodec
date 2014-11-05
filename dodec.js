@@ -6,7 +6,7 @@
 	var obsWidth = scale;
 	var obsX = 0;
 	var obsY = height;
-	var horizMargin = (width)-(12*scale-5); 
+	var horizMargin = (width)-(12*scale-5);
 	var vertMargin = 0;
 	var move = 3;
 	var change = 2;
@@ -33,7 +33,7 @@
 	var blue = '#151B54';
 	var resetWidth;
 	var aUrl = 'leaderboards.txt';
-	
+	var already;
 	var leaderboard=[];
 	var titleFont = width/20;
 	var livesText;
@@ -45,7 +45,7 @@
 	}
 	window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 	window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
-	
+
 	$(document).ready(function(){
 	$(window).resize(function(){
 	    location.reload();
@@ -61,7 +61,12 @@
 	var ctx2=c2.getContext("2d");
 	hill();
 	splash();
-	
+	if(localStorage.getItem("username") !== null){
+		already = true;
+	}
+	if(!already){
+		getUsername();
+	}
 	function animate(){
 		if(searching){
 			getLow();
@@ -77,7 +82,7 @@
 			requestAnimationFrame(animate);
 		}else{
 	        	if(score > leaderboard[4]){
-	            		onTheList(score);
+								onTheList(score,localStorage.getItem("username"));
 	        	}
 			ct.clearRect(0,0,width,height);
 			swal({
@@ -86,15 +91,15 @@
 				type:"error",
 				confirmButtonText:"New Game",
 				confirmButtonColor:blue
-			
+
 			},
 				function(){
 					splash();
 					document.getElementById('dummy').style.visibility = 'visible';
 					});
-			
+
 		}
-		
+
 	}
 	var hiscore = localStorage.getItem('hiscore');
 	function hiscoreHandler(s){
@@ -104,7 +109,7 @@
 	        localStorage.setItem('hiscore',0);
 	    }
 	}
-	
+
 	//draw hill down which boulder will roll as well as background
 	function hill(){
 		c2.setAttribute("height",height);
@@ -252,14 +257,14 @@
 	    		obsX = 0;
 			obsY = height-obsHeight;
 	    	}
-		
+
 		if(obsCounter>=obsWait){
 			ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 			ct.stroke();
 			obsX += width*obsChange/400;
 			obsY -= height*obsChange/800;
 		}
-		
+
 		if(ct.isPointInPath(obsX+obsWidth,obsY)||ct.isPointInPath(obsX,obsY)){
 				hurt = true;
 				obsable = false;
@@ -268,7 +273,7 @@
 				}
 	 			if(lives < 1){
 	                		splash();
-	                        
+
 	 			}
 	 			lives -= 1;
 				randobs=true;
@@ -284,7 +289,7 @@
 		          obsChange = Math.floor(Math.sqrt(score+1))+Math.floor(Math.random()*3);
 		        randobs=true;
 		}
-		
+
 	}
 	//reset variables in order for new game
 	function splash(){
@@ -327,7 +332,23 @@
 		if(mobile){
 			$(document).on('vclick',clickHandler);
 		}
-	
+
+	}
+	function getUsername(){
+			var uname = {
+				state0:{
+					title:"What would you like your name on the leaderboard to be?",
+					html:'<label>Username <input type="text" name="username" value=""></label><br />',
+					buttons:{ submit: 1},
+					submit:function(e,v,m,f){
+						localStorage.setItem("username",f.username);
+						e.preventDefault();
+						$.prompt.close();
+					}
+				}
+			};
+				$.prompt(uname);
+
 	}
 	function httpGet(theUrl){
 	    var xmlHttp = new XMLHttpRequest();
@@ -342,13 +363,13 @@
 	function writeList(arr){
 	    for(var i = 0;i<5;i++){
 	        if(arr[i] === undefined){
-	            arr[i] = 0;   
+	            arr[i] = 0;
 	        }
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
 	}
-	function onTheList(newScore){
+	function onTheList(newScore,name){
 	    $.ajax({
 	        type:"POST",
 	        url: "https://mandrillapp.com/api/1.0/messages/send.json",
@@ -364,14 +385,14 @@
 	                ],
 	            'autotext':'true',
 	                'subject':'New High Score!',
-	                'html':''+newScore
+	                'html':''+newScore+" achieved by "+name
 	            }
 	        }
 	    }).done(function(response){
 	        console.log(response);
 	    });
 	}
-	
-	
+
+
 	});
 })();
