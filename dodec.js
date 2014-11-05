@@ -29,7 +29,7 @@
 	var inc = 0;
 	var started = false;
 	var incinc = 0.2;
-	var white = '#E5E4E2';
+	var white = '#009933';
 	var blue = '#151B54';
 	var resetWidth;
 	var aUrl = 'leaderboards.txt';
