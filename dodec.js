@@ -37,6 +37,8 @@
 	var leaderboard=[];
 	var titleFont = width/20;
 	var livesText;
+	var obsType = 0;
+	var powerUp = false
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -248,12 +250,24 @@
 		});
 	}
 	function obs(){
+		if(powerUp=false){
 	    ct.strokeStyle=white;
+		}
+		else{
+		ct.strokeStyle=green;
+		}
 	    	if(randobs===true){
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
 	    		obsHeight = Math.floor((Math.random() * 25) + 25);
 	    		obsWait = Math.floor((Math.random() * 100)+ obsChange*2);
+	    		obsType = Math.random()
+	    		if (obsType>0.9){
+	    			powerUp = true;
+	    		}
+	    		else {
+	    			powerUp = false;
+	    		}
 	    		obsX = 0;
 			obsY = height-obsHeight;
 	    	}
