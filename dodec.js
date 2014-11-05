@@ -251,6 +251,7 @@
 	}
 	function obs(){
 	    ct.strokeStyle= "#009933";
+	    ct.fillStyle= "#009933";
 	    	if(randobs===true){
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
@@ -268,6 +269,7 @@
 	    	}
 
 		if(obsCounter>=obsWait){
+			ct.fillStyle = "#009933"
 			ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 			ct.stroke();
 			obsX += width*obsChange/400;
