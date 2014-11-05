@@ -250,8 +250,7 @@
 		});
 	}
 	function obs(){
-	    ct.strokeStyle= "#009933";
-	    ct.fillStyle= "#009933";
+	    ct.strokeStyle= "#E5E4E2";
 	    	if(randobs===true){
 	    		randobs = false;
 	    		obsWidth = Math.floor((Math.random() * 40) + 25);
@@ -269,7 +268,13 @@
 	    	}
 
 		if(obsCounter>=obsWait){
-			ct.fillStyle = "#009933"
+			if(powerUp=true){
+				ct.fillStyle = "#009933"
+			}
+			else{
+				ct.fillStyle = "#E5E4E2"
+			}
+			if(power)
 			ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 			ct.stroke();
 			obsX += width*obsChange/400;
