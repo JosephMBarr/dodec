@@ -50,7 +50,7 @@
 	$(window).resize(function(){
 	    location.reload();
 	});
-	//writeList(readList(httpGet(aUrl)));
+	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
