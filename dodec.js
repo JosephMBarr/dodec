@@ -50,7 +50,7 @@
 	$(window).resize(function(){
 	    location.reload();
 	});
-	writeList(readList(httpGet(aUrl)));
+	//writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
@@ -59,6 +59,10 @@
 	ct.fillStyle= white;
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
+	var dodText = document.getElementById("dodec_text");
+	dodText.style.color = white;
+	dodText.style.marginTop = (height/2)-70+"px";
+	dodText.style.marginLeft = width/15 +"px";
 	hill();
 	splash();
 	if(localStorage.getItem("username") !== null){
@@ -316,18 +320,15 @@
 		}
 		var clickX;
 		var clickY;
-		var title = "dodec";
 		var play = "play";
-	    	var playFont = width/72;
-		var titleWidth = sct.measureText(title).width;
-		sct.fillText(title,width/14,height/2);
+	    var playFont = width/72;
 		sct.font=playFont+"px Courier";
 		var playWidth = sct.measureText(play).width;
-	    	var boxWidth = width/10;
-	    	var boxHeight = boxWidth/3.5;
+	    var boxWidth = width/10;
+	    var boxHeight = boxWidth/3.5;
 		var boxY = height/2-boxHeight;
-		sct.fillText(play,(width/14)*2+titleWidth,boxY+playFont*1.3);
-		sct.rect((width/14)*2+titleWidth-playWidth,boxY,boxWidth,boxHeight);
+		sct.fillText(play,width/4+playWidth,boxY+playFont*1.3);
+		sct.rect(width/4,boxY,boxWidth,boxHeight);
 		sct.stroke();
 		document.addEventListener('click',clickHandler);
 		if(mobile){
