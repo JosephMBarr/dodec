@@ -42,3 +42,8 @@
     margin-left:80%;
     margin-top:20%;
 }
+#dodec_text{
+	position:absolute;
+	font-size:70px;
+	z-index:5;
+}
