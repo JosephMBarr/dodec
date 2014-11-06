@@ -299,6 +299,7 @@
 	//reset variables in order for new game
 	function splash(){
 		restart();
+		dodText.style.visibility = "visibile"
 		var splashCanvas=document.getElementById("splash");
 		splashCanvas.setAttribute("height",height);
 		splashCanvas.setAttribute("width",width);
@@ -313,6 +314,7 @@
 			if(sct.isPointInPath(clickX,clickY)){
 				sct.clearRect(0,0,width,height);
 				document.getElementById('dummy').style.visibility="hidden";
+				dodText.style.visibility="hidden";
 				document.removeEventListener('click',clickHandler);
 				lives = 3;
 				animate();
