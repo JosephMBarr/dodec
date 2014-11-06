@@ -100,6 +100,7 @@
 				function(){
 					splash();
 					document.getElementById('dummy').style.visibility = 'visible';
+					dodText.style.visibility = "visible"
 					});
 
 		}
@@ -299,7 +300,6 @@
 	//reset variables in order for new game
 	function splash(){
 		restart();
-		dodText.style.visibility = "visibile"
 		var splashCanvas=document.getElementById("splash");
 		splashCanvas.setAttribute("height",height);
 		splashCanvas.setAttribute("width",width);
