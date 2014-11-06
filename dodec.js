@@ -99,8 +99,6 @@
 			},
 				function(){
 					splash();
-					document.getElementById('dummy').style.visibility = 'visible';
-					dodText.style.visibility = "visible"
 					});
 
 		}
@@ -143,8 +141,6 @@
 	    	resetWidth = ctx2.measureText("Reset?").width;
 	}
 	function reset(event){
-		document.getElementById('dummy').style.visibility = 'visible';
-		dodText.style.visibility = "visible"
 	    var x = event.clientX;
 	    var y = event.clientY;
 	    if(x >= 900 && x <= resetWidth+900 && y >= textMargin-20 && y <= textMargin+20){
@@ -302,6 +298,8 @@
 	//reset variables in order for new game
 	function splash(){
 		restart();
+		document.getElementById('dummy').style.visibility = "visible";
+		dodText.style.visibility = "visible";
 		var splashCanvas=document.getElementById("splash");
 		splashCanvas.setAttribute("height",height);
 		splashCanvas.setAttribute("width",width);
