@@ -101,8 +101,10 @@
 			requestAnimationFrame(animate);
 		}else{
 			var dsMan = client.getDatastoreManager();
-			dsMan.openDatastore(".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE",function(ds){
-			  tTable = ds.getTable('hiscores');
+			var ds = ".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE";
+			dsMan.openDatastore(ds, function (error, datastore) {
+			datastore.setRole(Dropbox.Datastore.PUBLIC, Dropbox.Datastore.EDITOR);
+			  tTable = datastore.getTable('hiscores');
 			  var tq = tTable.query();
 			  leads = [];
 			  for(var i = 0;i<tq.length;i++){
