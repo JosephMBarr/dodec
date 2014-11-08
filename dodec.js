@@ -39,6 +39,7 @@
 	var livesText;
 	var leads;
 	var tTable;
+	var hscore;
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -102,13 +103,12 @@
 			var dsMan = client.getDatastoreManager();
 			dsMan.openDefaultDatastore(function(error,datastore){
 			  tTable = datastore.getTable('hiscores');
-			  leads = tTable.query();
-			  var hscore = tTable.insert({
+			  hscore = tTable.insert({
 			    newScore: score
 			  });
 			});
-			
-			console.log(leads);
+			leads = tTable.query();
+			console.log(leads)
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
 	        	}
