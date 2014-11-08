@@ -37,6 +37,7 @@
 	var leaderboard=[];
 	var titleFont = width/20;
 	var livesText;
+	var leads;
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -104,6 +105,8 @@
 			    newScore: score
 			  });
 			});
+			leads = tTable.query();
+			console.log(leads);
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
 	        	}
