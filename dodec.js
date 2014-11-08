@@ -106,8 +106,7 @@
 			  hscore = tTable.insert({
 			    newScore: score
 			  });
-			  leads = tTable.query();
-			console.log(leads)
+			  console.log(tTable.get('newScore'));
 			});
 			
 	        	if(score > parseFloat(leaderboard[4])){
