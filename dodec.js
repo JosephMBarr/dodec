@@ -38,6 +38,7 @@
 	var titleFont = width/20;
 	var livesText;
 	var leads;
+	var tTable;
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -100,7 +101,7 @@
 		}else{
 			var dsMan = client.getDatastoreManager();
 			dsMan.openDefaultDatastore(function(error,datastore){
-			  var tTable = datastore.getTable('hiscores');
+			  tTable = datastore.getTable('hiscores');
 			  leads = tTable.query();
 			  var hscore = tTable.insert({
 			    newScore: score
