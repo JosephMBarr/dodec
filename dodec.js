@@ -101,11 +101,12 @@
 			var dsMan = client.getDatastoreManager();
 			dsMan.openDefaultDatastore(function(error,datastore){
 			  var tTable = datastore.getTable('hiscores');
+			  leads = tTable.query();
 			  var hscore = tTable.insert({
 			    newScore: score
 			  });
 			});
-			leads = tTable.query();
+			
 			console.log(leads);
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
