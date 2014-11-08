@@ -37,9 +37,6 @@
 	var leaderboard=[];
 	var titleFont = width/20;
 	var livesText;
-	var leads;
-	var tTable;
-	var hscore;
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -53,17 +50,6 @@
 	$(window).resize(function(){
 	    location.reload();
 	});
-		var client = new Dropbox.Client({key:'gotth5j8shw6vsc'});
-		client.authenticate({interactive:false},function(error){
-		  if(error){
-		    console.log("auth error: "+error);
-		  }
-		});
-		if(client.isAuthenticated()){
-		}
-		document.addEventListener("click",function(){
-		  client.authenticate();
-		});
 
 	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
@@ -100,20 +86,6 @@
 		if(lives > 0){
 			requestAnimationFrame(animate);
 		}else{
-			var dsMan = client.getDatastoreManager();
-			dsMan.openDefaultDatastore(function(error,datastore){
-			  tTable = datastore.getTable('hiscores');
-			  var tq = tTable.query();
-			  leads = [];
-			  for(var i = 0;i<tq.length;i++){
-			  	leads.push(tq[i].get('newScore'))
-			  }
-			  console.log(leads);
-			  hscore = tTable.insert({
-			    newScore: score
-			  });
-			
-			});
 			
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
