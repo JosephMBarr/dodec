@@ -101,8 +101,8 @@
 			requestAnimationFrame(animate);
 		}else{
 			var dsMan = client.getDatastoreManager();
-			dsMan.createDatastore(function(error,datastore){
-			  tTable = datastore.getTable('hiscores');
+			dsMan.createDatastore(function(){
+			  tTable = "default".getTable('hiscores');
 			  var tq = tTable.query();
 			  leads = [];
 			  for(var i = 0;i<tq.length;i++){
