@@ -102,7 +102,7 @@
 		}else{
 			var dsMan = client.getDatastoreManager();
 			dsMan.createDatastore(function(){
-			  tTable = "default".getTable('hiscores');
+			  tTable = ".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE".getTable('hiscores');
 			  var tq = tTable.query();
 			  leads = [];
 			  for(var i = 0;i<tq.length;i++){
