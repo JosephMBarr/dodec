@@ -101,7 +101,7 @@
 			requestAnimationFrame(animate);
 		}else{
 			var dsMan = client.getDatastoreManager();
-			dsMan.openDatastore(".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE",function(null,ds){
+			dsMan.openDatastore(".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE",function(ds){
 			  tTable = ds.getTable('hiscores');
 			  var tq = tTable.query();
 			  leads = [];
