@@ -13,6 +13,6 @@ var dsMan = client.getDatastoreManager();
 dsMan.openDefaultDatastore(function(error,datastore){
   var tTable = datastore.getTable('hiscores');
   var hscore = tTable.insert({
-    newScore: localStorage.getItem("hiscore");
+    newScore: localStorage.getItem("hiscore")
   });
 });
