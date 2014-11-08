@@ -101,8 +101,8 @@
 			requestAnimationFrame(animate);
 		}else{
 			var dsMan = client.getDatastoreManager();
-			dsMan.openDatastore(function(){
-			  tTable = ".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE".getTable('hiscores');
+			dsMan.openDatastore(".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE",function(dId){
+			  tTable = dId.getTable('hiscores');
 			  var tq = tTable.query();
 			  leads = [];
 			  for(var i = 0;i<tq.length;i++){
