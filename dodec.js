@@ -106,7 +106,10 @@
 			  hscore = tTable.insert({
 			    newScore: score
 			  });
-			  console.log(tTable.get('newScore'));
+			function getScore(){
+				return tTable.getOrInsert('new_score',{newScore:0});
+			}
+			  console.log(getScore().get('newScore');
 			});
 			
 	        	if(score > parseFloat(leaderboard[4])){
