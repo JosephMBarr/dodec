@@ -103,8 +103,12 @@
 			var dsMan = client.getDatastoreManager();
 			dsMan.openDefaultDatastore(function(error,datastore){
 			  tTable = datastore.getTable('hiscores');
-			  var tq = tTable.query({newScore:3});
-			  console.log(tq[0]);
+			  var tq = tTable.query();
+			  leads = [];
+			  for(var i = 0;i<tq.length;i++){
+			  	leads.push(tq[i].get('newScore'))
+			  }
+			  console.log(leads);
 			  hscore = tTable.insert({
 			    newScore: score
 			  });
