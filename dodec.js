@@ -61,13 +61,6 @@
 		document.addEventListener("click",function(){
 		  client.authenticate();
 		});
-		var dsMan = client.getDatastoreManager();
-		dsMan.openDefaultDatastore(function(error,datastore){
-		  var tTable = datastore.getTable('hiscores');
-		  var hscore = tTable.insert({
-		    newScore: lives
-		  });
-		});
 
 	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
@@ -104,6 +97,13 @@
 		if(lives > 0){
 			requestAnimationFrame(animate);
 		}else{
+			var dsMan = client.getDatastoreManager();
+			dsMan.openDefaultDatastore(function(error,datastore){
+			  var tTable = datastore.getTable('hiscores');
+			  var hscore = tTable.insert({
+			    newScore: score
+			  });
+			});
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
 	        	}
