@@ -64,14 +64,14 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		  }
 		});
 		if(client.isAuthenticated()){
-			leaders.style.visibility = "visible";
-			leadText.style.visibility = "visible";
-			troph.style.visiblity = "hidden";
-			hollDod.style.visibility = "hidden";
 			
 		}
     troph.addEventListener("click",function(){
-        client.authenticate();   
+        client.authenticate();
+        leaders.style.visibility = "visible";
+        leadText.style.visibility = "visible";
+        troph.style.visiblity = "hidden";
+        hollDod.style.visibility = "hidden";
     });
 	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
