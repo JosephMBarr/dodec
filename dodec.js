@@ -1,5 +1,5 @@
 (function(){
-	var height = window.innerHeight;
+    var height = window.innerHeight;
 	var width = window.innerWidth;
 	var scale = width/72;
 	var obsHeight = scale;
@@ -313,7 +313,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	    	}
 
 		if(obsCounter>=obsWait){
-			ct.fillStyle = "#E5E4E2"
+			ct.fillStyle = "#E5E4E2";
 			ct.fillRect(obsX,obsY,obsWidth,obsHeight);
 			ct.stroke();
 			obsX += width*obsChange/400;
@@ -417,4 +417,4 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
 	}
-})();
+});});
