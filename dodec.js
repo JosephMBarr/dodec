@@ -48,8 +48,7 @@
 	}
 	window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 	window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
-//if (window.location.protocol != "https:")
-    //window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+if (window.location.protocol != "https:"){window.location.href = "https:" + window.location.href.substring(window.location.protocol.length)};
 	$(document).ready(function(){
 	$(window).resize(function(){
 	    location.reload();
@@ -71,7 +70,7 @@
 			hollDod.style.visibility = "hidden";
 			
 		}
-	//writeList(readList(httpGet(aUrl)));
+	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
