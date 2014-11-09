@@ -351,6 +351,8 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		restart();
 		document.getElementById('dummy').style.visibility = "visible";
 		dodText.style.visibility = "visible";
+		leaders.style.visibility="visible";
+		leadText.style.visibility="visible";
 		var splashCanvas=document.getElementById("splash");
 		splashCanvas.setAttribute("height",height);
 		splashCanvas.setAttribute("width",width);
@@ -376,11 +378,11 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		var clickX;
 		var clickY;
 		var play = "play";
-	    var playFont = width/72;
+	 	var playFont = width/72;
 		sct.font=playFont+"px Courier";
 		var playWidth = sct.measureText(play).width;
-	    var boxWidth = width/10;
-	    var boxHeight = boxWidth/3.5;
+	    	var boxWidth = width/10;
+	    	var boxHeight = boxWidth/3.5;
 		var boxY = height/2-boxHeight;
 		sct.fillText(play,width/4+playWidth,boxY+playFont*1.3);
 		sct.rect(width/4,boxY,boxWidth,boxHeight);
@@ -408,47 +410,12 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 				$.prompt(uname);
 
 	}
-	function httpGet(theUrl){
-	    var xmlHttp = new XMLHttpRequest();
-	    xmlHttp.open("GET",theUrl,false);
-	    xmlHttp.send(null);
-	    return xmlHttp.responseText;
-	}
-	function readList(lst){
-	    var lines = lst.split('\n');
-	    return lines;
-	}
+
 	function writeList(arr){
-        arr.sort(function(a,b){return parseFloat(b)-parseFloat(a)});
+        	arr.sort(function(a,b){return parseFloat(b)-parseFloat(a)});
 	    for(var i = 0;i<5;i++){
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
 	}
-	function onTheList(newScore,name){
-	    $.ajax({
-	        type:"POST",
-	        url: "https://mandrillapp.com/api/1.0/messages/send.json",
-	        data: {
-	            'key':'dqZonEvVVPUI3IYSnJkK-Q',
-	            'message':{
-	                'from_email':'stheery@gmail.com',
-	                'to':[
-	                    {
-	                        'email':'dodecgame@gmail.com',
-	                        'type':'to'
-	                    }
-	                ],
-	            'autotext':'true',
-	                'subject':'New High Score!',
-	                'html':''+newScore+" achieved by "+name
-	            }
-	        }
-	    }).done(function(response){
-	        console.log(response);
-	    });
-	}
-
-
-	});
 })();
