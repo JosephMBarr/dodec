@@ -27,6 +27,7 @@
 }
 #leaderboard{
     font-size:20px;
+    visibility:hidden;
     position:absolute;
     color:white;
     margin-top:70px;
@@ -34,6 +35,7 @@
 }
 #text{
     font-size:30px;
+    visibility:hidden;
     position:absolute;
     color:white;
     z-index:999999;
@@ -46,4 +48,14 @@
 	position:absolute;
 	font-size:70px;
 	z-index:5;
+}
+
+#troph{
+	z-index:5;
+	position:absolute;
+	
+}
+#hollow_dodec{
+	z-index:5;
+	position:absolute;
 }
