@@ -136,9 +136,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 			hscore = tTable.insert({
 			    newScore: score+" - "+theUsername
 			  });
-	        	if(score > parseFloat(leaderboard[4])){
-								onTheList(score,localStorage.getItem("username"));
-	        	}
 			ct.clearRect(0,0,width,height);
 			swal({
 				title:"You Lose!",
