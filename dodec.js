@@ -408,9 +408,8 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 				}
 			};
 				$.prompt(uname);
-
 	}
-
+	
 	function writeList(arr){
         	arr.sort(function(a,b){return parseFloat(b)-parseFloat(a)});
 	    for(var i = 0;i<5;i++){
