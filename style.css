@@ -53,6 +53,7 @@
 #troph{
 	z-index:5;
 	position:absolute;
+    visbility:hidden;
 	
 }
 #hollow_dodec{
