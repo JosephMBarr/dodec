@@ -69,13 +69,24 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
             leadText.style.visibility = "visible";
             troph.style.visibility = "hidden";
             hollDod.style.visibility = "hidden";
+            var dsMan = client.getDatastoreManager();
+			var ds = ".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE";
+			dsMan.openDatastore(ds, function (error, datastore) {
+			datastore.setRole(Dropbox.Datastore.PUBLIC, Dropbox.Datastore.EDITOR);
+			  tTable = datastore.getTable('hiscores');
+			  var tq = tTable.query();
+			  leads = [];
+			  for(var i = 0;i<tq.length;i++){
+			  	leads.push(tq[i].get('newScore'))
+			  }
+			});
 		}else{
              troph.addEventListener("click",function(){
                     client.authenticate();
                 });
         }
    
-	writeList(readList(httpGet(aUrl)));
+	writeList(leads);
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
@@ -117,23 +128,10 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		if(lives > 0){
 			requestAnimationFrame(animate);
 		}else{
-			var dsMan = client.getDatastoreManager();
-			var ds = ".RsuuPQGF6BBh0S60AxBIoQaFqWIg5swdQFjvDV3RtDE";
-			dsMan.openDatastore(ds, function (error, datastore) {
-			datastore.setRole(Dropbox.Datastore.PUBLIC, Dropbox.Datastore.EDITOR);
-			  tTable = datastore.getTable('hiscores');
-			  var tq = tTable.query();
-			  leads = [];
-			  for(var i = 0;i<tq.length;i++){
-			  	leads.push(tq[i].get('newScore'))
-			  }
-			  console.log(leads);
-			  hscore = tTable.insert({
+			
+			hscore = tTable.insert({
 			    newScore: score
 			  });
-			
-			});
-			
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
 	        	}
