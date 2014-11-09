@@ -48,12 +48,16 @@
 	}
 	window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 	window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
-if (window.location.protocol != "https:")
-    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+//if (window.location.protocol != "https:")
+    //window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 	$(document).ready(function(){
 	$(window).resize(function(){
 	    location.reload();
 	});
+		var troph = document.getElementById("troph");
+		var hollDod = document.getElementById("hollow_dodec");
+		var leaders = document.getElementById("leaderboard");
+		var leadText = document.getElementById("text");
 		var client = new Dropbox.Client({key:'gotth5j8shw6vsc'});
 		client.authenticate({interactive:false},function(error){
 		  if(error){
@@ -61,12 +65,13 @@ if (window.location.protocol != "https:")
 		  }
 		});
 		if(client.isAuthenticated()){
+			leaders.style.visibility = "visible";
+			leadText.style.visibility = "visible";
+			troph.style.visiblity = "hidden";
+			hollDod.style.visibility = "hidden";
+			
 		}
-		document.addEventListener("click",function(){
-		  client.authenticate();
-		});
-
-	writeList(readList(httpGet(aUrl)));
+	//writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
@@ -76,9 +81,16 @@ if (window.location.protocol != "https:")
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
 	var dodText = document.getElementById("dodec_text");
+
 	dodText.style.color = white;
 	dodText.style.marginTop = (height/2)-70+"px";
 	dodText.style.marginLeft = width/15 +"px";
+	troph.style.height = height/10+"px";
+	troph.style.marginLeft = width*(3/4)+"px";
+	troph.style.marginTop = height/2 - height/10+"px";
+	hollDod.style.height = height/6+"px";
+	hollDod.style.marginLeft = width*(3/4)-(width*(3/4))/40+"px";
+	hollDod.style.marginTop = height/2 - height/7.25+"px";
 	hill();
 	splash();
 	if(localStorage.getItem("username") !== null){
