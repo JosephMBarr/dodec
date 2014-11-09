@@ -416,4 +416,4 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
-	}});}();
+	}});})();
