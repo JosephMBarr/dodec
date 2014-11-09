@@ -70,7 +70,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 			hollDod.style.visibility = "hidden";
 			
 		}
-    troph.addEventListner("click",function(){
+    troph.addEventListener("click",function(){
         client.authenticate();   
     });
 	writeList(readList(httpGet(aUrl)));
