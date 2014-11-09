@@ -79,6 +79,8 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 			  for(var i = 0;i<tq.length;i++){
 			  	leads.push(tq[i].get('newScore'))
 			  }
+            console.log(leads);
+            writeList(leads);
 			});
 		}else{
              troph.addEventListener("click",function(){
@@ -86,7 +88,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
                 });
         }
    
-	writeList(leads);
+	
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
 	c3.setAttribute("height",height);
@@ -413,9 +415,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	}
 	function writeList(arr){
 	    for(var i = 0;i<5;i++){
-	        if(arr[i] === undefined){
-	            arr[i] = 0;
-	        }
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
