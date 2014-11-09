@@ -414,7 +414,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	    return lines;
 	}
 	function writeList(arr){
-        arr.sort(function(a,b){return a-b});
+        arr.sort(function(a,b){return b-a});
 	    for(var i = 0;i<5;i++){
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
