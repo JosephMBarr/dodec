@@ -40,6 +40,7 @@
 	var leads;
 	var tTable;
 	var hscore;
+	var theUsername;
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -112,6 +113,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	splash();
 	if(localStorage.getItem("username") !== null){
 		already = true;
+		theUsername = localStorage.getItem("username");
 	}
 	if(!already){
 		getUsername();
@@ -132,7 +134,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		}else{
 			
 			hscore = tTable.insert({
-			    newScore: score
+			    newScore: score+" - "+theUsername
 			  });
 	        	if(score > parseFloat(leaderboard[4])){
 								onTheList(score,localStorage.getItem("username"));
@@ -395,6 +397,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 					buttons:{ submit: 1},
 					submit:function(e,v,m,f){
 						localStorage.setItem("username",f.username);
+						theUsername = localStorage.getItem("username");
 						e.preventDefault();
 						$.prompt.close();
 					}
