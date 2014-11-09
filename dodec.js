@@ -72,7 +72,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		}
     troph.addEventListner("click",function(){
         client.authenticate();   
-    }
+    });
 	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
