@@ -65,16 +65,16 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		});
 		if(client.isAuthenticated()){
             console.log(client.isAuthenticated());
+            leaders.style.visibility = "visible";
+            leadText.style.visibility = "visible";
+            troph.style.visibility = "hidden";
+            hollDod.style.visibility = "hidden";
 		}else{
-            
+             troph.addEventListener("click",function(){
+                    client.authenticate();
+                });
         }
-    troph.addEventListener("click",function(){
-        client.authenticate();
-        leaders.style.visibility = "visible";
-        leadText.style.visibility = "visible";
-        troph.style.visibility = "hidden";
-        hollDod.style.visibility = "hidden";
-    });
+   
 	writeList(readList(httpGet(aUrl)));
 	//obstacle/boulder canvas
 	var c3=document.getElementById("can3");
