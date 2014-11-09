@@ -64,13 +64,15 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		  }
 		});
 		if(client.isAuthenticated()){
-			
-		}
+            console.log(client.isAuthenticated());
+		}else{
+            
+        }
     troph.addEventListener("click",function(){
         client.authenticate();
         leaders.style.visibility = "visible";
         leadText.style.visibility = "visible";
-        troph.style.visiblity = "hidden";
+        troph.style.visibility = "hidden";
         hollDod.style.visibility = "hidden";
     });
 	writeList(readList(httpGet(aUrl)));
