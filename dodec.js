@@ -367,6 +367,8 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 				dodText.style.visibility="hidden";
 				leaders.style.visibility="hidden";
 				leadText.style.visibility="hidden";
+				troph.style.visibility="hidden";
+				hollDod.style.visibility="hidden";
 				document.removeEventListener('click',clickHandler);
 				lives = 3;
 				animate();
