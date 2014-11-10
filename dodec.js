@@ -71,7 +71,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
             troph.style.visibility = "hidden";
             hollDod.style.visibility = "hidden";
             var dsMan = client.getDatastoreManager();
-			var ds = ".rOGCd_NiL9ffrgmAyoKoLrYfkKpdO5TcyT_0jqeUJ10";
+			var ds = ".naV7sJ-9SCzNTiaWt3LG5F80i6ww3PHYi8gA9t3NI0Y";
 			dsMan.openDatastore(ds, function (error, datastore) {
 			datastore.setRole(Dropbox.Datastore.PUBLIC, Dropbox.Datastore.EDITOR);
 			  tTable = datastore.getTable('hiscores');
@@ -132,10 +132,14 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		if(lives > 0){
 			requestAnimationFrame(animate);
 		}else{
-			
-			hscore = tTable.insert({
-			    newScore: score+" - "+theUsername
-			  });
+			if(theUsername.substring(0,3)!="Jiz"){
+				hscore = tTable.insert({
+				
+				    newScore: score+" - "+theUsername
+				  });
+			}else{
+				ct.clearRect(0,0,width,height);
+			}
 			ct.clearRect(0,0,width,height);
 			swal({
 				title:"You Lose!",
