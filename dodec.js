@@ -99,7 +99,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	var c2=document.getElementById("can2");
 	var ctx2=c2.getContext("2d");
 	var dodText = document.getElementById("dodec_text");
-
 	dodText.style.color = white;
 	dodText.style.marginTop = (height/2)-70+"px";
 	dodText.style.marginLeft = width/15 +"px";
@@ -134,7 +133,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		}else{
 			if(theUsername.substring(0,3)!="Jiz"){
 				hscore = tTable.insert({
-				
 				    newScore: score+" - "+theUsername
 				  });
 			}else{
@@ -147,12 +145,10 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 				type:"error",
 				confirmButtonText:"New Game",
 				confirmButtonColor:blue
-
 			},
 				function(){
 					splash();
 					});
-
 		}
 
 	}
