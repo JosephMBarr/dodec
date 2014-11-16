@@ -49,7 +49,7 @@
 	}
 	window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 	window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
-if (window.location.protocol != "https:"){window.location.href = "https:" + window.location.href.substring(window.location.protocol.length)};
+//if (window.location.protocol != "https:"){window.location.href = "https:" + window.location.href.substring(window.location.protocol.length)};
 	$(document).ready(function(){
 	$(window).resize(function(){
 	    location.reload();
