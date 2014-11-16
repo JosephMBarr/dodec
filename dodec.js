@@ -104,7 +104,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	dodText.style.marginLeft = width/15 +"px";
 	troph.style.height = height/10+"px";
 	troph.style.marginLeft = width*(3/4)+"px";
-	troph.style.marginTop = height/2 - height/10+"px";
+	troph.style.marginTop = height/2-height/10+"px";
 	hollDod.style.height = height/6+"px";
 	hollDod.style.marginLeft = width*(3/4)-(width*(3/4))/40+"px";
 	hollDod.style.marginTop = height/2 - height/7.25+"px";
