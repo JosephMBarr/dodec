@@ -41,6 +41,8 @@
 	var tTable;
 	var hscore;
 	var theUsername;
+	var poof = false; 
+	var poofCounter = 0; 
 	//higher values increase gravity of boulder, lower values decrease it. Values too low cause boulder to fly infinitely
 	var gravity = 0.07;
 	$.mobile.loadingMessage = false;
@@ -51,6 +53,53 @@
 	window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
 //if (window.location.protocol != "https:"){window.location.href = "https:" + window.location.href.substring(window.location.protocol.length)};
 	$(document).ready(function(){
+				particlesJS('particles-js', {
+		  particles: {
+		    color: '#fff',
+		    shape: 'dodec', // "circle", "edge" or "triangle"
+		    opacity: 1,
+		    size: 2,
+		    size_random: true,
+		    nb: 10,
+		    line_linked: {
+		      enable_auto: false,
+		      distance: 100,
+		      color: '#fff',
+		      opacity: 1,
+		      width: 1,
+		      condensed_mode: {
+		        enable: true,
+		        rotateX: 600,
+		        rotateY: 600
+		      }
+		    },
+		    anim: {
+		      enable: true,
+		      speed: 2
+		    }
+		  },
+		  interactivity: {
+		    enable: false,
+		    mouse: {
+		      distance: 250
+		    },
+		    detect_on: 'canvas', // "canvas" or "window"
+		    mode: 'grab',
+		    line_linked: {
+		      opacity: .2
+		    },
+		    events: {
+		      onclick: {
+		          push_particles: {
+		              enable: false,
+		              nb: 4
+		          }
+		        }
+		    }
+		  },
+		  /* Retina Display Support */
+		  retina_detect: true
+		});
 	$(window).resize(function(){
 	    location.reload();
 	});
@@ -58,6 +107,8 @@
 		var hollDod = document.getElementById("hollow_dodec");
 		var leaders = document.getElementById("leaderboard");
 		var leadText = document.getElementById("text");
+		var parts = document.getElementById("particles-js");
+		parts.style.visibility = "hidden";
 		var client = new Dropbox.Client({key:'gotth5j8shw6vsc'});
 		client.authenticate({interactive:false},function(error){
 		  if(error){
@@ -120,6 +171,11 @@
 	function animate(){
 		if(searching){
 			getLow();
+		}
+		if(poofCounter > 0 && poofCounter < 20 && poof){
+			parts.style.visibility = "visible";
+		}else{
+			parts.style.visibility = "hidden";
 		}
 		dodec();
 		ctx2.clearRect(0,0,width,height);
@@ -226,6 +282,9 @@
 		if(red > 100){
 			searching = false;
 	        hillY = move;
+	        parts.style.marginTop = hillY+parseFloat($(parts).height())+"px";
+	        parts.style.marginLeft = width-parseFloat($(parts).width())+"px";
+	        poof = true;
 		}
 	}
 	function drawDodec(){
@@ -271,8 +330,11 @@
 		if(started){
 			inc += incinc;
 		}
-		if(move >= hillY && searching === false){
+		if(move >= hillY && !searching){
 			change = 0;
+			if(poofCounter < 20){
+				poofCounter += 1;
+			}
 			inc = 0;
 			incinc = -incinc;
 			started = true;
@@ -288,6 +350,7 @@
 			$(document).on('vclick',function(){
 				change = -3;
 	            incinc = -gravity;
+	            poofCounter = 0;
 			});
 		}
 		document.addEventListener('keydown',function(event){
@@ -295,6 +358,7 @@
 			if((thekey == 38 ||thekey == 32) && change === 0){
 				change = -3;
 				incinc = -gravity;
+				poofCounter = 0;
 			}
 		});
 	}
@@ -415,4 +479,5 @@
 	        leaderboard.push(arr[i]);
 	        document.getElementById('score'+(i+1)).innerHTML = arr[i];
 	    }
+
 	}});})();

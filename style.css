@@ -60,3 +60,7 @@
 	z-index:5;
 	position:absolute;
 }
+#particles-js{
+	z-index:50000;
+	position:absolute;
+}
