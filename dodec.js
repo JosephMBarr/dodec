@@ -71,7 +71,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
             troph.style.visibility = "hidden";
             hollDod.style.visibility = "hidden";
             var dsMan = client.getDatastoreManager();
-			var ds = ".naV7sJ-9SCzNTiaWt3LG5F80i6ww3PHYi8gA9t3NI0Y";
+			var ds = ".aKvgZ-XgBmP2_akQdsZPIb8hWzGN2DnxuMEAxB3ZenM";
 			dsMan.openDatastore(ds, function (error, datastore) {
 			datastore.setRole(Dropbox.Datastore.PUBLIC, Dropbox.Datastore.EDITOR);
 			  tTable = datastore.getTable('hiscores');
