@@ -1,6 +1,6 @@
 dodec
 =====
-A venture in game design by Joey Barr and Kent Wilson
+A venture in game design by Joey Barr
 
 Game idea: Mathew Allen
 <h4>Resources Used:</h4>
