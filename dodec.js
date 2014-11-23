@@ -32,7 +32,6 @@
 	var white = '#E5E4E2';
 	var blue = '#151B54';
 	var resetWidth;
-	var aUrl = 'leaderboards.txt';
 	var already;
 	var leaderboard=[];
 	var titleFont = width/20;
