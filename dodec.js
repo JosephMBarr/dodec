@@ -7,7 +7,7 @@
 	var obsX = 0;
 	var obsY = height;
 	var horizMargin = (width)-(12*scale-5);
-	var vertMargin = (height/2)-(12*scale)+(scale)-5;
+	var vertMargin = (height/2)-(12*scale)+(2*scale)-5;
 	var move = vertMargin;
 	var change = 2;
 	var score = 0;
