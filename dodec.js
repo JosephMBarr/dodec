@@ -14,7 +14,6 @@
 	var lives = 3;
 	var obsChange = 2;
 	var randobs = true;
-	var searching = true;
 	var justUnder;
 	var red;
 	var hillY = move;
@@ -121,7 +120,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		ctx2.clearRect(0,0,width,height);
 		hill();
 		text();
-	    if(obsable && !searching){
+	    if(obsable){
 			obs();
 		}
 		if(lives > 0){
@@ -216,14 +215,14 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	    ctx2.clearRect(0,0,width,height);
 	    hill();
 	}
-	function getLow(){
+	/*function getLow(){
 		justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
 		red = justUnder.data[0];
 		if(red > 100){
 			searching = false;
 	        hillY = move;
 		}
-	}
+	}*/
 	function drawDodec(){
 		ct.strokeStyle = white;
 		ct.beginPath();
@@ -267,7 +266,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		if(started){
 			inc += incinc;
 		}
-		if(move >= hillY && searching === false){
+		if(move >= hillY){
 			change = 0;
 			inc = 0;
 			incinc = -incinc;
