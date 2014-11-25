@@ -7,8 +7,8 @@
 	var obsX = 0;
 	var obsY = height;
 	var horizMargin = (width)-(12*scale-5);
-	var vertMargin = 0;
-	var move = 3;
+	var vertMargin = (height/2)-(12*scale)+(2*scale);
+	var move = vertMargin;
 	var change = 2;
 	var score = 0;
 	var lives = 3;
@@ -17,7 +17,7 @@
 	var searching = true;
 	var justUnder;
 	var red;
-	var hillY = 0;
+	var hillY = move;
 	var obsable = false;
 	var pts = 'pts';
 	var mobile = false;
@@ -117,9 +117,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 		getUsername();
 	}
 	function animate(){
-		if(searching){
-			getLow();
-		}
 		dodec();
 		ctx2.clearRect(0,0,width,height);
 		hill();
