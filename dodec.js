@@ -14,8 +14,6 @@
 	var lives = 3;
 	var obsChange = 2;
 	var randobs = true;
-	var justUnder;
-	var red;
 	var hillY = move;
 	var obsable = false;
 	var pts = 'pts';
@@ -215,14 +213,6 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	    ctx2.clearRect(0,0,width,height);
 	    hill();
 	}
-	/*function getLow(){
-		justUnder = ct.getImageData(6*scale+horizMargin,12*scale+vertMargin+move,1,1);
-		red = justUnder.data[0];
-		if(red > 100){
-			searching = false;
-	        hillY = move;
-		}
-	}*/
 	function drawDodec(){
 		ct.strokeStyle = white;
 		ct.beginPath();
