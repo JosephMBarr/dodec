@@ -184,7 +184,7 @@ if (window.location.protocol != "https:"){window.location.href = "https:" + wind
 	function reset(event){
 	    var x = event.clientX;
 	    var y = event.clientY;
-	    if(x >= 900 && x <= resetWidth+900 && y >= textMargin-20 && y <= textMargin+20){
+	    if(x >= 900 && x <= resetWidth + 900 && y >= textMargin-20 && y <= textMargin+20){
 	        swal({
 	            title:"Do you really want to reset your high score?",
 	            text:"This action cannot be undone.",
